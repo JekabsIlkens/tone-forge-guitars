@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -8,14 +8,18 @@
 {
     body 
     {
-        font-family: "Oxanium", sans-serif;
+        font-family: "Poppins", sans-serif;
+        @apply bg-light-900;
     }
 }
 
 @layer components 
 {
-    .title 
-    {
-        @apply my-6 text-center text-3xl font-bold leading-9 text-slate-900;
-    }
+    header { @apply bg-primary-500 shadow-md shadow-primary-300; }
+
+    nav { @apply p-4 max-w-screen-lg mx-auto flex items-center justify-between; }
+
+    .title { @apply my-8 text-center text-3xl font-bold leading-9 text-dark-100; }
+
+    .nav-link { @apply text-light-900 hover:text-white hover:bg-secondary-600 rounded-md px-3 py-2 text-sm font-medium; }
 }
