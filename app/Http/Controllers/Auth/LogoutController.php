@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Support\Facades\Auth;
-use Inertia\Inertia;
 
 class LogoutController
 {
@@ -11,6 +10,6 @@ class LogoutController
     {
         Auth::logout(); 
         
-        return Inertia::render('Landing');
+        return redirect('/');
     }
 }
