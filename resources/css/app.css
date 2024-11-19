@@ -56,4 +56,9 @@
     {
         @apply flex w-full justify-center rounded-md bg-primary-500 px-3 py-1.5 text-sm font-semibold leading-6 text-light-900 shadow-sm hover:bg-secondary-600 hover:text-white disabled:bg-gray disabled:cursor-wait;
     }
+
+    .warning 
+    {
+        @apply block text-sm font-medium leading-6 text-warning
+    }
 }

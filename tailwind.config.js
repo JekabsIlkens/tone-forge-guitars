@@ -75,6 +75,7 @@ export default {
                 900: '#d9e2f2',
                 950: '#ecf1f9',
             },
+            'warning': '#9b646a',
         },
         extend: {},
     },

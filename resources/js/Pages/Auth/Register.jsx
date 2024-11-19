@@ -25,6 +25,7 @@ export default function Register()
                         value={data.full_name} 
                         onChange={(e) => setData("full_name", e.target.value)}>
                     </input>
+                    <div className="warning">{errors.full_name}</div>
 
                     <label>Email</label>
                     <input 
@@ -32,6 +33,7 @@ export default function Register()
                         value={data.email} 
                         onChange={(e) => setData("email", e.target.value)}>
                     </input>
+                    <div className="warning">{errors.email}</div>
 
                     <label>Password</label>
                     <input 
@@ -39,8 +41,9 @@ export default function Register()
                         value={data.password} 
                         onChange={(e) => setData("password", e.target.value)}>
                     </input>
+                    <div className="warning">{errors.password}</div>
 
-                    <button className="primary-btn mt-4">
+                    <button className="primary-btn mt-4" disabled={processing}>
                         Register
                     </button>
                 </form>

@@ -23,7 +23,9 @@ export default function UserLayout({children})
                             </p>
 
                             <form onSubmit={submit}>
-                                <button className="primary-btn">Logout</button>
+                                <button className="primary-btn">
+                                    Logout
+                                </button>
                             </form>
                         </>
                     ):(
