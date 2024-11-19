@@ -9,7 +9,7 @@
     body 
     {
         font-family: "Poppins", sans-serif;
-        @apply bg-light-900;
+        @apply bg-light-950;
     }
 }
 
@@ -32,19 +32,19 @@
 
     .title 
     { 
-        @apply my-8 text-center text-3xl font-bold leading-9 text-dark-100; 
+        @apply my-4 text-center text-3xl font-bold leading-9 text-dark-100; 
     }
 
     .nav-link 
     { 
-        @apply text-light-900 hover:text-white hover:bg-secondary-600 rounded-md px-3 py-2 text-sm font-medium; 
+        @apply text-light-950 hover:text-white hover:bg-secondary-600 rounded-md px-3 py-2 text-sm font-medium; 
     }
 
     input[type="text"],
     input[type="email"],
     input[type="password"] 
     {
-        @apply block w-full rounded-md border-0 p-2 text-dark-100 shadow-sm ring-1 ring-inset ring-primary-500 placeholder:text-dark-300 sm:text-sm bg-light-900;
+        @apply block w-full rounded-md border-0 p-2 text-dark-100 shadow-sm ring-1 ring-inset ring-primary-500 placeholder:text-dark-300 sm:text-sm bg-light-950;
     }
 
     label 
@@ -54,11 +54,16 @@
 
     .primary-btn 
     {
-        @apply flex w-full justify-center rounded-md bg-primary-500 px-3 py-1.5 text-sm font-semibold leading-6 text-light-900 shadow-sm hover:bg-secondary-600 hover:text-white disabled:bg-gray disabled:cursor-wait;
+        @apply flex w-full justify-center rounded-md bg-primary-500 px-3 py-1.5 text-sm font-semibold leading-6 text-light-950 shadow-sm hover:bg-secondary-600 hover:text-white disabled:bg-gray disabled:cursor-wait;
+    }
+
+    .danger-btn 
+    {
+        @apply flex w-full justify-center rounded-md bg-warning-500 px-3 py-1.5 text-sm font-semibold leading-6 text-light-950 shadow-sm hover:bg-warning-600 hover:text-white disabled:bg-gray disabled:cursor-wait;
     }
 
     .warning 
     {
-        @apply block text-sm font-medium leading-6 text-warning
+        @apply block text-sm font-medium leading-6 text-warning-500
     }
 }

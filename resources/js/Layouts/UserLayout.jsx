@@ -2,7 +2,7 @@ import { Link, usePage, useForm } from "@inertiajs/react";
 
 export default function UserLayout({children}) 
 {
-    const { auth } = usePage().props
+    const { auth } = usePage().props;
     const { post } = useForm();
 
     function submit(e){
@@ -18,9 +18,7 @@ export default function UserLayout({children})
 
                     {auth.user ? (
                         <>
-                            <p className="text-light-900 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
-                                Hello, {auth.user.full_name}
-                            </p>
+                            <Link className="nav-link" href="/profile">{auth.user.full_name}</Link>
 
                             <form onSubmit={submit}>
                                 <button className="primary-btn">
