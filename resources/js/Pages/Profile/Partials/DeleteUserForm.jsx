@@ -1,20 +1,16 @@
-import { useForm, usePage } from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
 
-export default function DeleteUserForm() 
-{
-    const { auth } = usePage().props;
-    const { delete: destroy } = useForm({
-        id: auth.user.id,
-    });
+export default function DeleteUserForm() {
+    const { delete: destroy } = useForm();
 
-    function deleteUser(e){
+    function deleteUser(e) {
         e.preventDefault();
         destroy("/profile");
     }
 
     return (
         <>
-            <h1 className="title">Delete your account</h1>
+            <h1 className="title">Delete account</h1>
 
             <p className="text-center text-warning-500">
                 Once your account is deleted, all of its resources and data

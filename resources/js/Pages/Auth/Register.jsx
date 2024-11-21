@@ -1,14 +1,13 @@
 import { useForm } from "@inertiajs/react";
 
-export default function Register() 
-{
+export default function Register() {
     const { data, setData, post, errors, processing } = useForm({
         full_name: "",
         email: "",
         password: "",
     });
 
-    function submit(e){
+    function submit(e) {
         e.preventDefault();
         post("/register");
     }
@@ -20,25 +19,25 @@ export default function Register()
             <div className="w-1/2 mx-auto">
                 <form onSubmit={submit}>
                     <label>Full name</label>
-                    <input 
-                        type="text" 
-                        value={data.full_name} 
+                    <input
+                        type="text"
+                        value={data.full_name}
                         onChange={(e) => setData("full_name", e.target.value)}>
                     </input>
                     <div className="warning">{errors.full_name}</div>
 
                     <label>Email</label>
-                    <input 
-                        type="email" 
-                        value={data.email} 
+                    <input
+                        type="email"
+                        value={data.email}
                         onChange={(e) => setData("email", e.target.value)}>
                     </input>
                     <div className="warning">{errors.email}</div>
 
                     <label>Password</label>
-                    <input 
-                        type="password" 
-                        value={data.password} 
+                    <input
+                        type="password"
+                        value={data.password}
                         onChange={(e) => setData("password", e.target.value)}>
                     </input>
                     <div className="warning">{errors.password}</div>

@@ -1,15 +1,19 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests\Profile;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+class UpdateProfileRequest extends FormRequest
 {
     public function rules(): array
     {
         return
             [
+                'id' =>
+                [
+                    'required',
+                ],
                 'full_name' =>
                 [
                     'required',
@@ -25,16 +29,6 @@ class RegisterRequest extends FormRequest
                     'max:255',
                     'unique:users,email',
                 ],
-                'password' =>
-                [
-                    'required',
-                    'string',
-                    'min:8',
-                    'regex:/[a-z]/',
-                    'regex:/[A-Z]/',
-                    'regex:/[0-9]/',
-                    'regex:/[@$!%*#?&]/',
-                ],
             ];
     }
 
@@ -43,7 +37,6 @@ class RegisterRequest extends FormRequest
         return
             [
                 'full_name.regex' => 'May only contain letters, spaces, hyphens, and apostrophes.',
-                'password.regex' => 'Use a mixture of upper/lower case letters, digits and symbols.',
             ];
     }
 }

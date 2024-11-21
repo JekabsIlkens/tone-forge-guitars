@@ -1,28 +1,29 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests\Profile;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends FormRequest
+class UpdatePasswordRequest extends FormRequest
 {
     public function rules(): array
     {
         return
             [
-                'email' =>
+                'current_password' =>
                 [
                     'required',
                     'string',
-                    'email',
-                    'max:255',
-                    'exists:users,email',
                 ],
-                'password' =>
+                'new_password' =>
                 [
                     'required',
                     'string',
                     'min:8',
+                    'regex:/[a-z]/',
+                    'regex:/[A-Z]/',
+                    'regex:/[0-9]/',
+                    'regex:/[@$!%*#?&]/',
                 ],
             ];
     }
@@ -31,7 +32,7 @@ class LoginRequest extends FormRequest
     {
         return
             [
-                'email.exists' => 'Provided email is not linked to an existing account.',
+                'new_password.regex' => 'Use a mixture of upper/lower case letters, digits and symbols.',
             ];
     }
 }
