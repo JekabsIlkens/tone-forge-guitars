@@ -22,6 +22,6 @@ class PasswordController
             'password' => Hash::make($data['new_password']),
         ]);
 
-        return back();
+        return back()->with('success', 'Password updated successfully!');
     }
 }
