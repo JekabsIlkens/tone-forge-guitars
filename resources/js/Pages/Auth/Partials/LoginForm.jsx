@@ -1,6 +1,7 @@
-import { useForm } from "@inertiajs/react";
+import { useForm, usePage } from "@inertiajs/react";
 
 export default function LoginForm() {
+    const { routes } = usePage().props;
     const { data, setData, post, errors, processing } = useForm({
         email: "",
         password: "",
@@ -8,7 +9,7 @@ export default function LoginForm() {
 
     function submit(e) {
         e.preventDefault();
-        post("/login");
+        post(routes.login.store);
     }
 
     return (

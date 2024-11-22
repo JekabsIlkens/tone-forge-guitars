@@ -1,12 +1,16 @@
 import { Link, usePage, useForm } from "@inertiajs/react";
 
 export default function UserLayout({ children }) {
-    const { auth } = usePage().props;
+    const { auth, url, routes } = usePage().props;
     const { post } = useForm();
 
     function submit(e) {
         e.preventDefault();
-        post("/logout");
+        post(routes.logout);
+    }
+
+    function getLinkClass(href) {
+        return url === href ? "nav-link-active" : "nav-link";
     }
 
     return (
@@ -14,18 +18,26 @@ export default function UserLayout({ children }) {
             <header>
                 <nav>
                     <div className="flex space-x-4">
-                        <Link className="nav-link" href="/">Home</Link>
-                        <Link className="nav-link" href="/">Guitars</Link>
+                        <Link className={getLinkClass("/")} href={routes.home}>
+                            Home
+                        </Link>
+
+                        <Link className={getLinkClass("/shop")} href={routes.home}>
+                            Shop
+                        </Link>
                     </div>
 
                     <div className="flex-grow text-center">
-                        <img className="mx-auto px-2 py-1 h-10" src="https://i.postimg.cc/RVbd613g/TF-sm.png" alt="TFG Logo" />
+                        <img className="mx-auto px-2 py-1 h-10" src="https://i.postimg.cc/RVbd613g/TF-sm.png" alt="TONE FORGE GUITARS" />
                     </div>
 
                     <div className="flex space-x-4">
                         {auth.user ? (
                             <>
-                                <Link className="nav-link" href="/profile">Profile</Link>
+                                <Link className={getLinkClass("/profile")} href={routes.profile.edit}>
+                                    Profile
+                                </Link>
+
                                 <form onSubmit={submit}>
                                     <button className="nav-link">
                                         Logout
@@ -34,8 +46,13 @@ export default function UserLayout({ children }) {
                             </>
                         ) : (
                             <>
-                                <Link className="nav-link" href="/login">Login</Link>
-                                <Link className="nav-link" href="/register">Register</Link>
+                                <Link className={getLinkClass("/login")} href={routes.login.create}>
+                                    Login
+                                </Link>
+
+                                <Link className={getLinkClass("/register")} href={routes.register.create}>
+                                    Register
+                                </Link>
                             </>
                         )}
                     </div>

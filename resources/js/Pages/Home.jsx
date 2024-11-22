@@ -1,4 +1,4 @@
-export default function Landing() {
+export default function Home() {
     return (
         <>
             <h1 className="title">Tone Forge Guitars</h1>

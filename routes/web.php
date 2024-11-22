@@ -7,9 +7,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\Profile\PasswordController;
 
-Route::get('/', function () {
-    return inertia('Landing');
-});
+Route::get('/', function () { return inertia('Home'); })->name('home');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/register', [RegisterController::class, 'create'])->name('register');

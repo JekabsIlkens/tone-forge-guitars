@@ -2,7 +2,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useForm, usePage } from "@inertiajs/react";
 
 export default function UpdateInfoForm() {
-    const { auth } = usePage().props;
+    const { auth, routes } = usePage().props;
     const { data, setData, patch, errors, processing } = useForm({
         full_name: auth.user.full_name,
         email: auth.user.email,
@@ -10,7 +10,9 @@ export default function UpdateInfoForm() {
 
     function updateInfo(e) {
         e.preventDefault();
-        patch("/profile");
+        patch(routes.profile.update, {
+            preserveScroll: true,
+        });
     }
 
     return (

@@ -2,7 +2,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useForm, usePage } from "@inertiajs/react";
 
 export default function UpdatePasswordForm() {
-    const { auth } = usePage().props;
+    const { auth, routes } = usePage().props;
     const { data, setData, patch, errors, processing, reset } = useForm({
         email: auth.user.email,
         current_password: "",
@@ -11,8 +11,9 @@ export default function UpdatePasswordForm() {
     
     function updatePassword(e) {
         e.preventDefault();
-        patch("/password", {
+        patch(routes.password.update, {
             onSuccess: () => reset(),
+            preserveScroll: true,
         });
     }
 

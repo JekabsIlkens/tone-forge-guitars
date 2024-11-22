@@ -1,11 +1,12 @@
-import { useForm } from "@inertiajs/react";
+import { useForm, usePage } from "@inertiajs/react";
 
 export default function DeleteUserForm() {
+    const { routes } = usePage().props;
     const { delete: destroy } = useForm();
 
     function deleteUser(e) {
         e.preventDefault();
-        destroy("/profile");
+        destroy(routes.profile.destroy);
     }
 
     return (

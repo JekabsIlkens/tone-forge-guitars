@@ -1,6 +1,7 @@
-import { useForm } from "@inertiajs/react";
+import { useForm, usePage } from "@inertiajs/react";
 
 export default function RegisterForm() {
+    const { routes } = usePage().props;
     const { data, setData, post, errors, processing } = useForm({
         full_name: "",
         email: "",
@@ -9,7 +10,7 @@ export default function RegisterForm() {
 
     function submit(e) {
         e.preventDefault();
-        post("/register");
+        post(routes.register.store);
     }
 
     return (

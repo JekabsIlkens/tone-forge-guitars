@@ -20,6 +20,6 @@ class LoginController
             throw ValidationException::withMessages(['error' => ['Provided password is incorrect.']]);
         }
 
-        return inertia('Landing');
+        return inertia('Home');
     }
 }
