@@ -1,5 +1,5 @@
-import { useForm, usePage } from "@inertiajs/react";
 import "react-toastify/dist/ReactToastify.css";
+import { useForm, usePage } from "@inertiajs/react";
 
 export default function UpdatePasswordForm() {
     const { auth } = usePage().props;
@@ -8,7 +8,7 @@ export default function UpdatePasswordForm() {
         current_password: "",
         new_password: "",
     });
-    console.log(auth.user.email);
+    
     function updatePassword(e) {
         e.preventDefault();
         patch("/password", {
@@ -17,8 +17,7 @@ export default function UpdatePasswordForm() {
     }
 
     return (
-        <div>
-            <h1 className="title">Change Password</h1>
+        <>
             <form onSubmit={updatePassword}>
                 <div>
                     <label htmlFor="current_password">Current Password</label>
@@ -32,6 +31,7 @@ export default function UpdatePasswordForm() {
                     <div className="warning">{errors.current_password}</div>
                     <div className="warning">{errors.error}</div>
                 </div>
+
                 <div>
                     <label htmlFor="new_password">New Password</label>
                     <input
@@ -43,10 +43,11 @@ export default function UpdatePasswordForm() {
                     />
                     <div className="warning">{errors.new_password}</div>
                 </div>
+
                 <button className="primary-btn mt-4" disabled={processing}>
                     {processing ? "Processing..." : "Change"}
                 </button>
             </form>
-        </div>
+        </>
     );
 }

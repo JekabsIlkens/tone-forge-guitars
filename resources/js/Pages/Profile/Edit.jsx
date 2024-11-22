@@ -1,11 +1,11 @@
-import { usePage } from "@inertiajs/react";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useEffect } from "react";
-
 import UpdateInfoForm from './Partials/UpdateInfoForm';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm';
 import DeleteUserForm from './Partials/DeleteUserForm';
+
+import { usePage } from "@inertiajs/react";
+import { ToastContainer, toast } from "react-toastify";
+import { useEffect } from "react";
 
 export default function Edit() {
     const { flash } = usePage().props;
@@ -27,27 +27,41 @@ export default function Edit() {
 
     return (
         <>
-            <div className='flex'>
-                <div className="w-1/2 mt-8 mr-4">
-                    <div className="bg-secondary-900 p-4 rounded-md">
+            <div className="max-w-lg w-full mx-auto mt-8 shadow-lg shadow-secondary-700">
+                <div className="bg-base_light p-4 rounded-sm">
+                    <h1 className="title">Update profile</h1>
+
+                    <div className="mx-auto">
                         <UpdateInfoForm />
                     </div>
                 </div>
+            </div>
 
-                <div className="w-1/2 mt-8 ml-4">
-                    <div className="bg-secondary-900 p-4 rounded-md">
+            <div className="max-w-lg w-full mx-auto mt-8 shadow-lg shadow-secondary-800">
+                <div className="bg-base_light p-4 rounded-sm">
+                    <h1 className="title">Change Password</h1>
+
+                    <div className="mx-auto">
                         <UpdatePasswordForm />
                     </div>
                 </div>
             </div>
 
-            <div className="w-auto mx-auto mt-8">
-                <div className="bg-secondary-900 p-4 rounded-md">
-                    <DeleteUserForm />
+            <div className="max-w-lg w-full mx-auto mt-8 mb-4 shadow-lg shadow-secondary-800">
+                <div className="bg-base_light p-4 rounded-sm">
+                    <h1 className="title">Delete account</h1>
+
+                    <p className="text-center text-warning-500"> 
+                        Don't worry, all your pending orders will still be delivered!
+                    </p>
+
+                    <div className="mx-auto">
+                        <DeleteUserForm />
+                    </div>
                 </div>
             </div>
 
             <ToastContainer />
         </>
-    )
+    );
 }

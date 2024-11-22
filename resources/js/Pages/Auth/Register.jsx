@@ -1,60 +1,16 @@
-import { useForm } from "@inertiajs/react";
+import RegisterForm from './Partials/RegisterForm';
 
 export default function Register() {
-    const { data, setData, post, errors, processing } = useForm({
-        full_name: "",
-        email: "",
-        password: "",
-    });
-
-    function submit(e) {
-        e.preventDefault();
-        post("/register");
-    }
-
     return (
         <>
-            <h1 className="title">Register</h1>
+            <div className="max-w-lg w-full mx-auto mt-8 shadow-lg shadow-secondary-700">
+                <div className="bg-base_light p-4 rounded-sm">
+                    <h1 className="title">Register</h1>
 
-            <div className="w-1/2 mx-auto">
-                <form onSubmit={submit}>
-                    <div>
-                        <label htmlFor="full_name">Full name</label>
-                        <input
-                            id="full_name"
-                            type="text"
-                            value={data.full_name}
-                            onChange={(e) => setData("full_name", e.target.value)}
-                            disabled={processing}
-                        />
-                        <div className="warning">{errors.full_name}</div>
+                    <div className="mx-auto">
+                        <RegisterForm />
                     </div>
-                    <div>
-                        <label htmlFor="email">Email</label>
-                        <input
-                            id="email"
-                            type="email"
-                            value={data.email}
-                            onChange={(e) => setData("email", e.target.value)}
-                            disabled={processing}
-                        />
-                        <div className="warning">{errors.email}</div>
-                    </div>
-                    <div>
-                        <label htmlFor="password">Password</label>
-                        <input
-                            id="password"
-                            type="password"
-                            value={data.password}
-                            onChange={(e) => setData("password", e.target.value)}
-                            disabled={processing}
-                        />
-                        <div className="warning">{errors.password}</div>
-                    </div>
-                    <button className="primary-btn mt-4" disabled={processing}>
-                        {processing ? "Processing..." : "Register"}
-                    </button>
-                </form>
+                </div>
             </div>
         </>
     );

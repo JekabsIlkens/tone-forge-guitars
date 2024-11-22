@@ -1,15 +1,12 @@
-import { useForm, usePage } from "@inertiajs/react";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import LoginForm from './Partials/LoginForm';
+
+import { usePage } from "@inertiajs/react";
+import { ToastContainer, toast } from "react-toastify";
 import { useEffect } from "react";
 
 export default function Login() {
     const { flash } = usePage().props;
-    console.log(usePage().props);
-    const { data, setData, post, errors, processing } = useForm({
-        email: "",
-        password: "",
-    });
 
     useEffect(() => {
         if (flash?.success) {
@@ -26,46 +23,19 @@ export default function Login() {
         }
     }, [flash.success]);
 
-    function submit(e) {
-        e.preventDefault();
-        post("/login");
-    }
-
     return (
         <>
-            <h1 className="title">Login</h1>
+            <div className="max-w-lg w-full mx-auto mt-8 shadow-lg shadow-secondary-700">
+                <div className="bg-base_light p-4 rounded-sm">
+                    <h1 className="title">Login</h1>
 
-            <div className="w-1/2 mx-auto">
-                <form onSubmit={submit}>
-                    <div>
-                        <label htmlFor="email">Email</label>
-                        <input
-                            id="email"
-                            type="email"
-                            value={data.email}
-                            onChange={(e) => setData("email", e.target.value)}
-                            disabled={processing}
-                        />
-                        <div className="warning">{errors.email}</div>
+                    <div className="mx-auto">
+                        <LoginForm />
                     </div>
-                    <div>
-                        <label htmlFor="password">Password</label>
-                        <input
-                            id="password"
-                            type="password"
-                            value={data.password}
-                            onChange={(e) => setData("password", e.target.value)}
-                            disabled={processing}
-                        />
-                        <div className="warning">{errors.password}</div>
-                        <div className="warning">{errors.error}</div>
-                    </div>
-                    <button className="primary-btn mt-4" disabled={processing}>
-                        {processing ? "Processing..." : "Login"}
-                    </button>
-                </form>
-                <ToastContainer />
+                </div>
             </div>
+
+            <ToastContainer />
         </>
     );
 }

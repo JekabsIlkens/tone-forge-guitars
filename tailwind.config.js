@@ -10,6 +10,14 @@ export default {
         {
             'white': '#ffffff',
             'gray': '#4b5563',
+            'black': '#000000',
+
+            'base_dark': '#0d1117',
+            'base_light': '#f1f3f8',
+            'base_primary': '#5075b4',
+            'base_secondary': '#94acd6',
+            'base_accent': '#7597d1',
+
             'dark': {
                 50: '#090c10',
                 100: '#121821',
@@ -23,6 +31,7 @@ export default {
                 900: '#dee4ed',
                 950: '#eff2f6',
             },
+
             'light': {
                 50: '#090b11',
                 100: '#111622',
@@ -36,6 +45,7 @@ export default {
                 900: '#dde2ee',
                 950: '#eef0f6',
             },
+
             'primary': {
                 50: '#080b12',
                 100: '#0f1724',
@@ -49,6 +59,7 @@ export default {
                 900: '#dbe3f0',
                 950: '#edf1f7',
             },
+
             'secondary': {
                 50: '#070b12',
                 100: '#0e1625',
@@ -62,6 +73,7 @@ export default {
                 900: '#dae2f1',
                 950: '#edf1f8',
             },
+
             'accent': {
                 50: '#060b13',
                 100: '#0d1626',
@@ -75,6 +87,7 @@ export default {
                 900: '#d9e2f2',
                 950: '#ecf1f9',
             },
+
             'warning': {
                 50: '#100a0b',
                 100: '#1f1415',

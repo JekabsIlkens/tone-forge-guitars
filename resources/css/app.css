@@ -9,7 +9,7 @@
     body 
     {
         font-family: "Poppins", sans-serif;
-        @apply bg-light-950;
+        @apply min-h-screen bg-no-repeat bg-gradient-to-t from-base_light to-secondary-800;
     }
 }
 
@@ -22,7 +22,12 @@
 
     header 
     { 
-        @apply bg-primary-500 shadow-md shadow-primary-300; 
+        @apply bg-base_light shadow-md shadow-secondary-700; 
+    }
+
+    footer 
+    {
+        @apply text-center text-base_primary py-4;
     }
 
     nav 
@@ -32,19 +37,19 @@
 
     .title 
     { 
-        @apply my-4 text-center text-3xl font-bold leading-9 text-dark-100; 
+        @apply my-4 text-center text-3xl font-bold leading-9 text-gray; 
     }
 
     .nav-link 
     { 
-        @apply text-light-950 hover:text-white hover:bg-secondary-600 rounded-md px-3 py-2 text-sm font-medium; 
+        @apply text-base_primary px-2 py-1 text-sm font-medium border-b-2 border-base_light hover:border-base_primary; 
     }
 
     input[type="text"],
     input[type="email"],
     input[type="password"] 
     {
-        @apply block w-full rounded-md border-0 p-2 text-dark-100 shadow-sm ring-1 ring-inset ring-primary-500 placeholder:text-dark-300 sm:text-sm bg-light-950;
+        @apply block w-full rounded-sm border-0 p-2 text-dark-100 shadow-sm ring-1 ring-inset ring-primary-500 placeholder:text-dark-300 sm:text-sm bg-light-950;
     }
 
     label 
@@ -54,12 +59,12 @@
 
     .primary-btn 
     {
-        @apply flex w-full justify-center rounded-md bg-primary-500 px-3 py-1.5 text-sm font-semibold leading-6 text-light-950 shadow-sm hover:bg-secondary-600 hover:text-white disabled:bg-gray disabled:cursor-wait;
+        @apply flex w-full justify-center rounded-sm bg-primary-500 px-3 py-1.5 text-sm font-semibold leading-6 text-light-950 shadow-sm hover:bg-secondary-600 hover:text-white disabled:bg-gray disabled:cursor-wait;
     }
 
     .danger-btn 
     {
-        @apply flex w-full justify-center rounded-md bg-warning-500 px-3 py-1.5 text-sm font-semibold leading-6 text-light-950 shadow-sm hover:bg-warning-600 hover:text-white disabled:bg-gray disabled:cursor-wait;
+        @apply flex w-full justify-center rounded-sm bg-warning-500 px-3 py-1.5 text-sm font-semibold leading-6 text-light-950 shadow-sm hover:bg-warning-600 hover:text-white disabled:bg-gray disabled:cursor-wait;
     }
 
     .warning 

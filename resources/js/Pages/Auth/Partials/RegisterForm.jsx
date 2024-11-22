@@ -1,21 +1,20 @@
-import "react-toastify/dist/ReactToastify.css";
-import { useForm, usePage } from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
 
-export default function UpdateInfoForm() {
-    const { auth } = usePage().props;
-    const { data, setData, patch, errors, processing } = useForm({
-        full_name: auth.user.full_name,
-        email: auth.user.email,
+export default function RegisterForm() {
+    const { data, setData, post, errors, processing } = useForm({
+        full_name: "",
+        email: "",
+        password: "",
     });
 
-    function updateInfo(e) {
+    function submit(e) {
         e.preventDefault();
-        patch("/profile");
+        post("/register");
     }
 
     return (
         <>
-            <form onSubmit={updateInfo}>
+            <form onSubmit={submit}>
                 <div>
                     <label htmlFor="full_name">Full name</label>
                     <input
@@ -40,8 +39,20 @@ export default function UpdateInfoForm() {
                     <div className="warning">{errors.email}</div>
                 </div>
 
+                <div>
+                    <label htmlFor="password">Password</label>
+                    <input
+                        id="password"
+                        type="password"
+                        value={data.password}
+                        onChange={(e) => setData("password", e.target.value)}
+                        disabled={processing}
+                    />
+                    <div className="warning">{errors.password}</div>
+                </div>
+                
                 <button className="primary-btn mt-4" disabled={processing}>
-                    {processing ? "Processing..." : "Update"}
+                    {processing ? "Processing..." : "Register"}
                 </button>
             </form>
         </>
