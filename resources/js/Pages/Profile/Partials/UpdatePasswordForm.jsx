@@ -5,8 +5,6 @@ import { useEffect } from "react";
 
 export default function UpdatePasswordForm() {
     const { auth, flash } = usePage().props;
-
-    console.log(usePage().props);
     const { data, setData, patch, errors, processing, reset } = useForm({
         email: auth.user.email,
         current_password: "",
@@ -16,7 +14,7 @@ export default function UpdatePasswordForm() {
     useEffect(() => {
         if (flash?.success) {
             toast.success(flash.success, {
-                position: "top-right",
+                position: "bottom-right",
                 autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,

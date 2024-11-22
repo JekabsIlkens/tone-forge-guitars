@@ -18,32 +18,38 @@ export default function Register() {
 
             <div className="w-1/2 mx-auto">
                 <form onSubmit={submit}>
-                    <label>Full name</label>
-                    <input
-                        type="text"
-                        value={data.full_name}
-                        onChange={(e) => setData("full_name", e.target.value)}>
-                    </input>
-                    <div className="warning">{errors.full_name}</div>
-
-                    <label>Email</label>
-                    <input
-                        type="email"
-                        value={data.email}
-                        onChange={(e) => setData("email", e.target.value)}>
-                    </input>
-                    <div className="warning">{errors.email}</div>
-
-                    <label>Password</label>
-                    <input
-                        type="password"
-                        value={data.password}
-                        onChange={(e) => setData("password", e.target.value)}>
-                    </input>
-                    <div className="warning">{errors.password}</div>
-
+                    <div>
+                        <label htmlFor="full_name">Full name</label>
+                        <input
+                            id="full_name"
+                            type="text"
+                            value={data.full_name}
+                            onChange={(e) => setData("full_name", e.target.value)}
+                        />
+                        <div className="warning">{errors.full_name}</div>
+                    </div>
+                    <div>
+                        <label htmlFor="email">Email</label>
+                        <input
+                            id="email"
+                            type="email"
+                            value={data.email}
+                            onChange={(e) => setData("email", e.target.value)}
+                        />
+                        <div className="warning">{errors.email}</div>
+                    </div>
+                    <div>
+                        <label htmlFor="password">Password</label>
+                        <input
+                            id="password"
+                            type="password"
+                            value={data.password}
+                            onChange={(e) => setData("password", e.target.value)}
+                        />
+                        <div className="warning">{errors.password}</div>
+                    </div>
                     <button className="primary-btn mt-4" disabled={processing}>
-                        Register
+                        {processing ? "Processing..." : "Register"}
                     </button>
                 </form>
             </div>
