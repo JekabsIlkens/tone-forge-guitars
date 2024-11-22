@@ -24,7 +24,7 @@ class ProfileController
             'email' => $data['email'],
         ]);
 
-        return back();
+        return back()->with('success', 'Profile data updated successfully!');
     }
 
     public function destroy(Request $request): RedirectResponse

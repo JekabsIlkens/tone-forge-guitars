@@ -25,6 +25,7 @@ export default function Register() {
                             type="text"
                             value={data.full_name}
                             onChange={(e) => setData("full_name", e.target.value)}
+                            disabled={processing}
                         />
                         <div className="warning">{errors.full_name}</div>
                     </div>
@@ -35,6 +36,7 @@ export default function Register() {
                             type="email"
                             value={data.email}
                             onChange={(e) => setData("email", e.target.value)}
+                            disabled={processing}
                         />
                         <div className="warning">{errors.email}</div>
                     </div>
@@ -45,6 +47,7 @@ export default function Register() {
                             type="password"
                             value={data.password}
                             onChange={(e) => setData("password", e.target.value)}
+                            disabled={processing}
                         />
                         <div className="warning">{errors.password}</div>
                     </div>

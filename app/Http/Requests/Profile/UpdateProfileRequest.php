@@ -10,10 +10,6 @@ class UpdateProfileRequest extends FormRequest
     {
         return
             [
-                'id' =>
-                [
-                    'required',
-                ],
                 'full_name' =>
                 [
                     'required',

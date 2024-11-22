@@ -1,31 +1,14 @@
 import { useForm, usePage } from "@inertiajs/react";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useEffect } from "react";
 
 export default function UpdatePasswordForm() {
-    const { auth, flash } = usePage().props;
+    const { auth } = usePage().props;
     const { data, setData, patch, errors, processing, reset } = useForm({
         email: auth.user.email,
         current_password: "",
         new_password: "",
     });
-
-    useEffect(() => {
-        if (flash?.success) {
-            toast.success(flash.success, {
-                position: "bottom-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-        }
-    }, [flash.success]);
-
+    console.log(auth.user.email);
     function updatePassword(e) {
         e.preventDefault();
         patch("/password", {
@@ -64,7 +47,6 @@ export default function UpdatePasswordForm() {
                     {processing ? "Processing..." : "Change"}
                 </button>
             </form>
-            <ToastContainer />
         </div>
     );
 }

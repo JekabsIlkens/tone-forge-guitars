@@ -1,4 +1,5 @@
 import { useForm, usePage } from "@inertiajs/react";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function UpdateInfoForm() {
     const { auth } = usePage().props;
@@ -18,26 +19,30 @@ export default function UpdateInfoForm() {
 
             <div className="mx-auto">
                 <form onSubmit={updateInfo}>
-                    <label htmlFor="full_name">Full name</label>
-                    <input
-                        id="full_name"
-                        type="text"
-                        value={data.full_name}
-                        onChange={(e) => setData("full_name", e.target.value)}>
-                    </input>
-                    <div className="warning">{errors.full_name}</div>
-
-                    <label htmlFor="email">Email</label>
-                    <input
-                        id="email"
-                        type="email"
-                        value={data.email}
-                        onChange={(e) => setData("email", e.target.value)}>
-                    </input>
-                    <div className="warning">{errors.email}</div>
-
+                    <div>
+                        <label htmlFor="full_name">Full name</label>
+                        <input
+                            id="full_name"
+                            type="text"
+                            value={data.full_name}
+                            onChange={(e) => setData("full_name", e.target.value)}
+                            disabled={processing}
+                        />
+                        <div className="warning">{errors.full_name}</div>
+                    </div>
+                    <div>
+                        <label htmlFor="email">Email</label>
+                        <input
+                            id="email"
+                            type="email"
+                            value={data.email}
+                            onChange={(e) => setData("email", e.target.value)}
+                            disabled={processing}
+                        />
+                        <div className="warning">{errors.email}</div>
+                    </div>
                     <button className="primary-btn mt-4" disabled={processing}>
-                        Save
+                        {processing ? "Processing..." : "Save"}
                     </button>
                 </form>
             </div>
