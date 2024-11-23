@@ -28,3 +28,4 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/categories', function () { return inertia('Shop/Categories'); })->name('categories');
+Route::get('/shop', function () { return inertia('Shop/Index'); })->name('shop.index');
