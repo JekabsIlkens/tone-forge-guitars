@@ -1,4 +1,8 @@
+import { Link, usePage } from "@inertiajs/react";
+
 export default function Index() {
+    const { routes } = usePage().props;
+
     return (
         <>
             <h1 className="title">All Guitars</h1>
@@ -13,7 +17,7 @@ export default function Index() {
 
                     <p className="text-center my-4 text-md font-semibold text-gray">69.00&#8364;</p>
 
-                    <button className="primary-btn mt-4">View</button>
+                    <Link className="primary-btn mt-4" href={routes.shop.show}>View</Link>
                 </div>
 
                 <div className="bg-white p-4 rounded-sm h-96 content-between">

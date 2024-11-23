@@ -50,6 +50,7 @@ class HandleInertiaRequests extends Middleware
 
                 'shop' => [
                     'index' => route('shop.index'),
+                    'show' => route('shop.show'),
                 ],
             ],
 
