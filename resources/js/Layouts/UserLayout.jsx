@@ -4,7 +4,7 @@ export default function UserLayout({ children }) {
     const { auth, url, routes } = usePage().props;
     const { post } = useForm();
 
-    function submit(e) {
+    function logoutUser(e) {
         e.preventDefault();
         post(routes.logout);
     }
@@ -38,7 +38,7 @@ export default function UserLayout({ children }) {
                                     Profile
                                 </Link>
 
-                                <form onSubmit={submit}>
+                                <form onSubmit={logoutUser}>
                                     <button className="nav-link">
                                         Logout
                                     </button>

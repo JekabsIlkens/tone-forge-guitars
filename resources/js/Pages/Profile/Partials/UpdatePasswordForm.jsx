@@ -1,5 +1,6 @@
 import "react-toastify/dist/ReactToastify.css";
 import { useForm, usePage } from "@inertiajs/react";
+import InputField from "../../../Components/InputField";
 
 export default function UpdatePasswordForm() {
     const { auth, routes } = usePage().props;
@@ -17,34 +18,32 @@ export default function UpdatePasswordForm() {
         });
     }
 
+    function handleChange(field) {
+        return (e) => setData(field, e.target.value);
+    }
+
     return (
         <>
             <form onSubmit={updatePassword}>
-                <div>
-                    <label htmlFor="current_password">Current Password</label>
-                    <input
-                        id="current_password"
-                        type="password"
-                        value={data.current_password}
-                        onChange={(e) => setData("current_password", e.target.value)}
-                        disabled={processing}
-                    />
-                    <div className="warning">{errors.current_password}</div>
-                    <div className="warning">{errors.error}</div>
-                </div>
-
-                <div>
-                    <label htmlFor="new_password">New Password</label>
-                    <input
-                        id="new_password"
-                        type="password"
-                        value={data.new_password}
-                        onChange={(e) => setData("new_password", e.target.value)}
-                        disabled={processing}
-                    />
-                    <div className="warning">{errors.new_password}</div>
-                </div>
-
+                <InputField
+                    id="current_password"
+                    label="Current Password"
+                    type="password"
+                    value={data.current_password}
+                    onChange={handleChange("current_password")}
+                    error={errors.current_password}
+                    disabled={processing}
+                />
+                <div className="warning">{errors.error}</div>
+                <InputField
+                    id="new_password"
+                    label="New Password"
+                    type="password"
+                    value={data.new_password}
+                    onChange={handleChange("new_password")}
+                    error={errors.new_password}
+                    disabled={processing}
+                />
                 <button className="primary-btn mt-4" disabled={processing}>
                     {processing ? "Processing..." : "Change"}
                 </button>

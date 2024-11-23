@@ -1,4 +1,5 @@
 import { useForm, usePage } from "@inertiajs/react";
+import InputField from "../../../Components/InputField";
 
 export default function RegisterForm() {
     const { routes } = usePage().props;
@@ -8,50 +9,45 @@ export default function RegisterForm() {
         password: "",
     });
 
-    function submit(e) {
+    function registerUser(e) {
         e.preventDefault();
         post(routes.register.store);
     }
 
+    function handleChange(field) {
+        return (e) => setData(field, e.target.value);
+    }
+
     return (
         <>
-            <form onSubmit={submit}>
-                <div>
-                    <label htmlFor="full_name">Full name</label>
-                    <input
-                        id="full_name"
-                        type="text"
-                        value={data.full_name}
-                        onChange={(e) => setData("full_name", e.target.value)}
-                        disabled={processing}
-                    />
-                    <div className="warning">{errors.full_name}</div>
-                </div>
-
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        id="email"
-                        type="email"
-                        value={data.email}
-                        onChange={(e) => setData("email", e.target.value)}
-                        disabled={processing}
-                    />
-                    <div className="warning">{errors.email}</div>
-                </div>
-
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input
-                        id="password"
-                        type="password"
-                        value={data.password}
-                        onChange={(e) => setData("password", e.target.value)}
-                        disabled={processing}
-                    />
-                    <div className="warning">{errors.password}</div>
-                </div>
-                
+            <form onSubmit={registerUser}>
+                <InputField
+                    id="full_name"
+                    label="Full Name"
+                    type="text"
+                    value={data.full_name}
+                    onChange={handleChange("full_name")}
+                    error={errors.full_name}
+                    disabled={processing}
+                />
+                <InputField
+                    id="email"
+                    label="Email"
+                    type="email"
+                    value={data.email}
+                    onChange={handleChange("email")}
+                    error={errors.email}
+                    disabled={processing}
+                />
+                <InputField
+                    id="password"
+                    label="Password"
+                    type="password"
+                    value={data.password}
+                    onChange={handleChange("password")}
+                    error={errors.password}
+                    disabled={processing}
+                />      
                 <button className="primary-btn mt-4" disabled={processing}>
                     {processing ? "Processing..." : "Register"}
                 </button>
