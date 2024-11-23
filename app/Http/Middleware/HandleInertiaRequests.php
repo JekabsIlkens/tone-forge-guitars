@@ -45,6 +45,8 @@ class HandleInertiaRequests extends Middleware
                 'password' => [
                     'update' => route('password.update'),
                 ],
+
+                'categories' => route('categories'),
             ],
 
             'flash' => [

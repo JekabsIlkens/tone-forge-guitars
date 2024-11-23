@@ -26,3 +26,5 @@ Route::middleware(['auth'])->group(function () {
 
     Route::patch('/password', [PasswordController::class, 'update'])->name('password.update');
 });
+
+Route::get('/categories', function () { return inertia('Shop/Categories'); })->name('categories');

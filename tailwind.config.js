@@ -102,7 +102,17 @@ export default {
                 950: '#f5eff0',
             },
         },
-        extend: {},
+        extend: {
+            backgroundImage: {
+                'acoustic': "url('/images/acoustic.jpg')",
+                'electric': "url('/images/electric.jpg')",
+                'bass': "url('/images/bass.jpg')",
+                
+                'acoustic_active': "url('/images/acoustic_active.jpg')",
+                'electric_active': "url('/images/electric_active.jpg')",
+                'bass_active': "url('/images/bass_active.jpg')",
+            },
+        },
     },
     plugins: [],
 };

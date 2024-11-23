@@ -22,7 +22,7 @@ export default function UserLayout({ children }) {
                             Home
                         </Link>
 
-                        <Link className={getLinkClass("/shop")} href={routes.home}>
+                        <Link className={getLinkClass("/categories")} href={routes.categories}>
                             Shop
                         </Link>
                     </div>
