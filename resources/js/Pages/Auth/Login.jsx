@@ -1,6 +1,5 @@
 import "react-toastify/dist/ReactToastify.css";
 import LoginForm from './Partials/LoginForm';
-
 import { usePage } from "@inertiajs/react";
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect } from "react";

@@ -2,7 +2,6 @@ import "react-toastify/dist/ReactToastify.css";
 import UpdateInfoForm from './Partials/UpdateInfoForm';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm';
 import DeleteUserForm from './Partials/DeleteUserForm';
-
 import { usePage } from "@inertiajs/react";
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect } from "react";

@@ -17,7 +17,7 @@ export default function UserLayout({ children }) {
         <div className="min-h-screen flex flex-col">
             <header>
                 <nav>
-                    <div className="flex space-x-4">
+                    <div className="flex justify-start space-x-4 w-1/3">
                         <Link className={getLinkClass("/")} href={routes.home}>
                             Home
                         </Link>
@@ -28,10 +28,10 @@ export default function UserLayout({ children }) {
                     </div>
 
                     <div className="flex-grow text-center">
-                        <img className="mx-auto px-2 py-1 h-10" src="https://i.postimg.cc/RVbd613g/TF-sm.png" alt="TONE FORGE GUITARS" />
+                        <img className="mx-auto px-2 py-1 h-10" src="/images/logo-small.png" alt="TONE FORGE GUITARS" />
                     </div>
 
-                    <div className="flex space-x-4">
+                    <div className="flex justify-end space-x-4 w-1/3">
                         {auth.user ? (
                             <>
                                 <Link className={getLinkClass("/profile")} href={routes.profile.edit}>
