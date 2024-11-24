@@ -22,7 +22,7 @@ export default function Index({ cartItems }) {
             });
         }
     }, [flash.success]);
-
+    console.log(cartItems);
     function stripeCheckout(e) {
         e.preventDefault();
         post('/stripe');

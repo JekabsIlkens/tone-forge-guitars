@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Payment;
 
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
+use App\Models\Cart;
 
 class StripeController
 {
@@ -13,19 +15,25 @@ class StripeController
     {
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
-        $session = Session::create([
-            'line_items' => [[
+        $cartItems = Cart::where('user_id', Auth::id())->with('product')->get();
+
+        $lineItems = $cartItems->map(function ($item) {
+            return [
                 'price_data' => [
                     'currency' => 'eur',
                     'product_data' => [
-                        'name' => 'Cort Electric guitar CR100 CRS',
-                        'description' => 'CR100 is equipped with a T.O.M. bridge and stop tailpiece which provides enhanced sustain as well as tuning stability and accurate intonation.',
-                        'images' => ['https://www.muzikasveikals.lv/image/cache/catalog/gitaras/Cort/CR100_CRS_Cort-1000x1000w.jpg'],
+                        'name' => $item->product->name,
+                        'description' => $item->product->description,
+                        'images' => [$item->product->image_url],
                     ],
-                    'unit_amount' => 26900,
+                    'unit_amount' => $item->product->price,
                 ],
-                'quantity' => 1,
-            ]],
+                'quantity' => $item->quantity,
+            ];
+        })->toArray();
+
+        $session = Session::create([
+            'line_items' => $lineItems,
             'mode' => 'payment',
             'success_url' => route('payment.success'),
             'cancel_url' => route('cart.index'),
@@ -36,6 +44,8 @@ class StripeController
 
     public function success(): Response
     {
-        return inertia('Cart/Index');
+        Cart::where('user_id', Auth::id())->delete();
+
+        return inertia('Profile/Profile');
     }
 }
