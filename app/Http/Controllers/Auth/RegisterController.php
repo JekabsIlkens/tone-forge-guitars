@@ -3,13 +3,19 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Requests\Auth\RegisterRequest;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
-use Inertia\Response;
+use App\Services\Auth\RegisterService;
 use Illuminate\Http\RedirectResponse;
+use Inertia\Response;
 
 class RegisterController
 {
+    protected $registerService;
+
+    public function __construct(RegisterService $registerService)
+    {
+        $this->registerService = $registerService;
+    }
+
     public function create(): Response
     {
         return inertia('Auth/Register');
@@ -17,10 +23,7 @@ class RegisterController
 
     public function store(RegisterRequest $request): RedirectResponse
     {
-        $data = $request->validated();
-        $data['password'] = Hash::make($data['password']);
-
-        User::create($data);
+        $this->registerService->createUser($request->validated());
 
         return redirect()->route('login')->with('success', 'Account created successfully!');
     }

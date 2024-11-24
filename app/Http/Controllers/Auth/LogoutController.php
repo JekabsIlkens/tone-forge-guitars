@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Support\Facades\Auth;
+use App\Services\Auth\LogoutService;
 use Illuminate\Http\RedirectResponse;
 
 class LogoutController
 {
+    protected $logoutService;
+
+    public function __construct(LogoutService $logoutService)
+    {
+        $this->logoutService = $logoutService;
+    }
+
     public function destroy(): RedirectResponse
     {
-        Auth::logout();
+        $this->logoutService->logoutUser();
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Logged out successfully!');
     }
 }

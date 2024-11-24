@@ -2,24 +2,29 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Support\Facades\Auth;
+use App\Services\Auth\LoginService;
 use App\Http\Requests\Auth\LoginRequest;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
 
 class LoginController
 {
+    protected $loginService;
+
+    public function __construct(LoginService $loginService)
+    {
+        $this->loginService = $loginService;
+    }
+
     public function create(): Response
     {
         return inertia('Auth/Login');
     }
 
-    public function store(LoginRequest $request): Response
+    public function store(LoginRequest $request): RedirectResponse
     {
-        if (!Auth::attempt($request->only('email', 'password'))) {
-            throw ValidationException::withMessages(['error' => ['Provided password is incorrect.']]);
-        }
+        $this->loginService->attemptLogin($request->validated());
 
-        return inertia('Home');
+        return redirect()->intended('/')->with('success', 'Logged in successfully!');
     }
 }

@@ -16,22 +16,12 @@ class LoginRequest extends FormRequest
                     'string',
                     'email',
                     'max:255',
-                    'exists:users,email',
                 ],
                 'password' =>
                 [
                     'required',
                     'string',
-                    'min:8',
                 ],
-            ];
-    }
-
-    public function messages()
-    {
-        return
-            [
-                'email.exists' => 'Provided email is not linked to an existing account.',
             ];
     }
 }
