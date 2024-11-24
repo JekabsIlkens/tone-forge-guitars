@@ -104,13 +104,13 @@ export default {
         },
         extend: {
             backgroundImage: {
-                'acoustic': "url('/images/acoustic.jpg')",
-                'electric': "url('/images/electric.jpg')",
-                'bass': "url('/images/bass.jpg')",
+                'Acoustic': "url('/images/acoustic.jpg')",
+                'Electric': "url('/images/electric.jpg')",
+                'Bass': "url('/images/bass.jpg')",
                 
-                'acoustic_active': "url('/images/acoustic_active.jpg')",
-                'electric_active': "url('/images/electric_active.jpg')",
-                'bass_active': "url('/images/bass_active.jpg')",
+                'Acoustic_active': "url('/images/acoustic_active.jpg')",
+                'Electric_active': "url('/images/electric_active.jpg')",
+                'Bass_active': "url('/images/bass_active.jpg')",
             },
         },
     },

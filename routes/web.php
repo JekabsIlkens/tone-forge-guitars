@@ -6,10 +6,13 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\Profile\PasswordController;
+use App\Http\Controllers\Shop\CategoryController;
+use App\Http\Controllers\Shop\ProductController;
 
 Route::get('/', function () { return inertia('Home'); })->name('home');
 
-Route::middleware(['guest'])->group(function () {
+Route::middleware(['guest'])->group(function () 
+{
     Route::get('/register', [RegisterController::class, 'create'])->name('register');
     Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
@@ -17,16 +20,22 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 });
 
-Route::middleware(['auth'])->group(function () {
-    Route::post('/logout', [LogoutController::class, 'destroy'])->name('logout');
-
+Route::middleware(['auth'])->group(function () 
+{   
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::patch('/password', [PasswordController::class, 'update'])->name('password.update');
+
+    Route::post('/logout', [LogoutController::class, 'destroy'])->name('logout');
 });
 
-Route::get('/categories', function () { return inertia('Shop/Categories'); })->name('categories');
-Route::get('/shop', function () { return inertia('Shop/Index'); })->name('shop.index');
-Route::get('/shop/1', function () { return inertia('Shop/Show'); })->name('shop.show');
+Route::prefix('shop')->group(function () 
+{
+    Route::get('/', [CategoryController::class, 'index'])->name('category.index');
+
+    Route::get('/{category}', [CategoryController::class, 'show'])->name('category.show');
+
+    Route::get('/{category}/{product}', [ProductController::class, 'show'])->name('product.show');
+});
