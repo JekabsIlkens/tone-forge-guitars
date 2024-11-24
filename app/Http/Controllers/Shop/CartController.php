@@ -2,50 +2,44 @@
 
 namespace App\Http\Controllers\Shop;
 
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Cart\AddToCartRequest;
-use App\Models\Cart;
-use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Services\Shop\CartService;
 
 class CartController
 {
+    protected CartService $cartService;
+
+    public function __construct(CartService $cartService)
+    {
+        $this->cartService = $cartService;
+    }
+
     public function index()
     {
-        $cartItems = Cart::with('product')
-        ->where('user_id', Auth::id())
-        ->get();
+        $cartItems = $this->cartService->getCartItems();
 
-        return inertia('Cart/Index', ['cartItems' => $cartItems]);
+        return inertia('Cart/Index', [
+            'cartItems' => $cartItems,
+        ]);
     }
 
     public function store(AddToCartRequest $request)
     {
-        $data = $request->validated();
+        try 
+        {
+            $this->cartService->addToCart($request->validated());
 
-        $product = Product::findOrFail($data['product_id']);
-
-        if ($product->stock < $data['quantity']) {
-            return back()->withErrors(['error' => 'Not enough stock available.']);
+            return redirect()->route('cart.index')->with('success', 'Item added to cart!');
+        } 
+        catch (\Exception $e) 
+        {
+            return back()->withErrors(['error' => $e->getMessage()]);
         }
-
-        Cart::updateOrCreate(
-            [
-                'user_id' => Auth::id(),
-                'product_id' => $data['product_id'],
-            ],
-            [
-                'quantity' => $data['quantity'],
-            ]
-        );
-
-        return redirect()->route('cart.index')->with('success', 'Item added to cart!');
     }
 
     public function destroy($id)
     {
-        $cartItem = Cart::where('user_id', Auth::id())->findOrFail($id);
-        $cartItem->delete();
+        $this->cartService->removeCartItem($id);
 
         return redirect()->route('cart.index')->with('success', 'Item removed from cart!');
     }

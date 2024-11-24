@@ -2,23 +2,36 @@
 
 namespace App\Http\Controllers\Shop;
 
+use App\Services\Shop\CategoryService;
+use App\Models\Category;
 use Inertia\Inertia;
 use Inertia\Response;
-use App\Models\Category;
 
 class CategoryController
 {
+    protected CategoryService $categoryService;
+
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+
     public function index(): Response
     {
-        $categories = Category::all();
+        $categories = $this->categoryService->getCategories();
 
-        return Inertia::render('Shop/Categories', ['categories' => $categories]);
+        return Inertia::render('Shop/Categories', [
+            'categories' => $categories,
+        ]);
     }
 
     public function show(Category $category): Response
     {
-        $products = $category->products;
+        $categoryWithProducts = $this->categoryService->getCategoryWithProducts($category);
 
-        return Inertia::render('Shop/Category', ['category' => $category, 'products' => $products]);
+        return Inertia::render('Shop/Category', [
+            'category' => $categoryWithProducts,
+            'products' => $categoryWithProducts->products,
+        ]);
     }
 }

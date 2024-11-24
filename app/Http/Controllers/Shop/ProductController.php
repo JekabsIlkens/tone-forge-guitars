@@ -11,6 +11,8 @@ class ProductController
 {
     public function show(Category $category, Product $product): Response
     {
-        return Inertia::render('Shop/Product', ['product' => $product]);
+        return Inertia::render('Shop/Product', [
+            'product' => $product,
+        ]);
     }
 }
