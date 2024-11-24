@@ -52,7 +52,8 @@
 
     input[type="text"],
     input[type="email"],
-    input[type="password"] 
+    input[type="password"],
+    input[type="number"]
     {
         @apply block w-full rounded-sm border-0 p-2 text-dark-100 shadow-sm ring-1 ring-inset ring-primary-500 placeholder:text-dark-300 sm:text-sm bg-light-950;
     }
@@ -70,6 +71,11 @@
     .danger-btn 
     {
         @apply flex w-full justify-center rounded-sm bg-warning-500 px-3 py-1.5 text-sm font-semibold leading-6 text-light-950 shadow-sm hover:bg-warning-600 hover:text-white disabled:bg-gray disabled:cursor-wait;
+    }
+
+    .disabled-btn 
+    {
+        @apply flex w-full justify-center rounded-sm bg-gray px-3 py-1.5 text-sm font-semibold leading-6 text-light-950 shadow-sm;
     }
 
     .warning 

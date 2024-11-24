@@ -1,7 +1,7 @@
 import { Link, usePage, useForm } from "@inertiajs/react";
 
 export default function UserLayout({ children }) {
-    const { auth, url, routes } = usePage().props;
+    const { auth, url, routes, cartCount } = usePage().props;
     const { post } = useForm();
 
     function logoutUser(e) {
@@ -36,6 +36,10 @@ export default function UserLayout({ children }) {
                             <>
                                 <Link className={getLinkClass("/profile")} href={routes.profile.edit}>
                                     Profile
+                                </Link>
+
+                                <Link className={getLinkClass("/cart")} href="/cart">
+                                    Cart <span>({cartCount})</span>
                                 </Link>
 
                                 <form onSubmit={logoutUser}>

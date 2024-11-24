@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use App\Models\Cart;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -57,6 +59,10 @@ class HandleInertiaRequests extends Middleware
                 'success' => $request->session()->get('success'),      
                 'error' => $request->session()->get('error'),
             ],
+
+            'cartCount' => fn () => Auth::check() 
+                ? Cart::where('user_id', Auth::id())->sum('quantity') 
+                : 0,
         ]);
     }
 }

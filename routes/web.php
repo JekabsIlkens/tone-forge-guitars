@@ -8,6 +8,7 @@ use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\Profile\PasswordController;
 use App\Http\Controllers\Shop\CategoryController;
 use App\Http\Controllers\Shop\ProductController;
+use App\Http\Controllers\Shop\CartController;
 
 Route::get('/', function () { return inertia('Home'); })->name('home');
 
@@ -34,8 +35,13 @@ Route::middleware(['auth'])->group(function ()
 Route::prefix('shop')->group(function () 
 {
     Route::get('/', [CategoryController::class, 'index'])->name('category.index');
-
     Route::get('/{category}', [CategoryController::class, 'show'])->name('category.show');
-
     Route::get('/{category}/{product}', [ProductController::class, 'show'])->name('product.show');
+});
+
+Route::middleware(['auth'])->prefix('cart')->group(function () 
+{
+    Route::get('/', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/add', [CartController::class, 'store'])->name('cart.store'); 
+    Route::delete('/remove/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
 });
