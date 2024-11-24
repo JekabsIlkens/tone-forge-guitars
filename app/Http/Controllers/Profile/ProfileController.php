@@ -3,13 +3,20 @@
 namespace App\Http\Controllers\Profile;
 
 use App\Http\Requests\Profile\UpdateProfileRequest;
-use Illuminate\Support\Facades\Auth;
+use App\Services\Profile\ProfileService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Response;
 
 class ProfileController
 {
+    protected ProfileService $profileService;
+
+    public function __construct(ProfileService $profileService)
+    {
+        $this->profileService = $profileService;
+    }
+
     public function edit(): Response
     {
         return inertia("Profile/Profile");
@@ -17,24 +24,15 @@ class ProfileController
 
     public function update(UpdateProfileRequest $request): RedirectResponse
     {
-        $data = $request->validated();
+        $this->profileService->updateProfile($request->user(), $request->validated());
 
-        $request->user()->update([
-            'full_name' => $data['full_name'],
-            'email' => $data['email'],
-        ]);
-
-        return back()->with('success', 'Profile data updated successfully!');
+        return back()->with('success', 'Profile updated successfully!');
     }
 
     public function destroy(Request $request): RedirectResponse
     {
-        $user = $request->user();
+        $this->profileService->deleteUser($request->user());
 
-        Auth::logout();
-
-        $user->delete();
-
-        return redirect('/');
+        return redirect('/')->with('success', 'Account deleted successfully!');
     }
 }
