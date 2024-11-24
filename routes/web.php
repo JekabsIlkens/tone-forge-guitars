@@ -9,6 +9,7 @@ use App\Http\Controllers\Profile\PasswordController;
 use App\Http\Controllers\Shop\CategoryController;
 use App\Http\Controllers\Shop\ProductController;
 use App\Http\Controllers\Shop\CartController;
+use App\Http\Controllers\Payment\StripeController;
 
 Route::get('/', function () { return inertia('Home'); })->name('home');
 
@@ -45,3 +46,7 @@ Route::middleware(['auth'])->prefix('cart')->group(function ()
     Route::post('/add', [CartController::class, 'store'])->name('cart.store'); 
     Route::delete('/remove/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
 });
+
+Route::post('/stripe', [StripeController::class, 'checkout'])->name('stripe.checkout');
+
+Route::get('/success', [StripeController::class, 'success'])->name('payment.success');

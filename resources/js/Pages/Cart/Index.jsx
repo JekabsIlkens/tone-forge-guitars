@@ -1,12 +1,12 @@
 import "react-toastify/dist/ReactToastify.css";
-import { Link } from '@inertiajs/react';
-import { usePage } from "@inertiajs/react";
+import { useForm, usePage } from "@inertiajs/react";
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect } from "react";
 import CartItemCard from "../../Components/CartItemCard";
 
 export default function Index({ cartItems }) {
-    const { flash } = usePage().props;
+    const { csrf_token: csrfToken, routes, flash } = usePage().props;
+    const { post, processing } = useForm();
 
     useEffect(() => {
         if (flash?.success) {
@@ -22,6 +22,11 @@ export default function Index({ cartItems }) {
             });
         }
     }, [flash.success]);
+
+    function stripeCheckout(e) {
+        e.preventDefault();
+        post('/stripe');
+    }
 
     const calculateTotal = () =>
         cartItems.reduce((sum, item) => sum + item.product.price / 100 * item.quantity, 0);
@@ -45,11 +50,17 @@ export default function Index({ cartItems }) {
                             />
                         ))}
 
-                    <h2 className='title text-start text-gray'>
-                        <span className='text-base_primary'>Total:</span> {calculateTotal()}&#8364;
-                    </h2>
+                        <h2 className='title text-start text-gray'>
+                            <span className='text-base_primary'>Total:</span> {calculateTotal()}&#8364;
+                        </h2>
 
-                    <Link className="primary-btn mt-4" href="/checkout">Proceed to Checkout</Link>
+                        <form onSubmit={stripeCheckout}>
+                            <input type="hidden" name="_token" value={csrfToken} />
+
+                            <button className="primary-btn mt-4" disabled={processing}>
+                                {processing ? "Processing..." : "Proceed to Checkout"}
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
