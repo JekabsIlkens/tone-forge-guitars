@@ -42,10 +42,18 @@ class StripeController
         return Inertia::location($session->url);
     }
 
-    public function success(): Response
+    public function success()
     {
+        $cartItems = Cart::where('user_id', Auth::id())->with('product')->get();
+
+        foreach ($cartItems as $item) 
+        {
+            $item->product->stock -= $item->quantity;
+            $item->product->save();
+        }
+
         Cart::where('user_id', Auth::id())->delete();
 
-        return inertia('Profile/Profile');
+        return inertia('Payment/Success');
     }
 }
