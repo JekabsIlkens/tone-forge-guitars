@@ -2,12 +2,20 @@
     <img align="center" alt="TFG-LOGO" width="1500px" src="https://i.postimg.cc/ZK1gQH02/TFG-banner.png"/>
 </h1>
 
-**Tech stack:** Laravel + React + Inertia + MySQL + Tailwind + Stripe API
-
 ## Table of Contents
+**[Development Notes](#development-notes)**<br>
 **[Installation Instructions](#installation-instructions)**<br>
-**[Progress on Development](#progress-on-development)**<br>
 **[User Journey Showcase](#user-journey-showcase)**<br>
+
+## Development Notes
+
+**Tech Stack:** Laravel + React + Inertia + MySQL + Tailwind + Stripe API
+
+**To-Do List:**
+- [ ] Ability to update cart item quantity on cart page
+- [ ] Stripe Webhook listener to correctly track order status
+- [ ] Shipping address details for customers before purchase
+- [ ] Admin panel for managing products and active orders
 
 ## Installation Instructions:
 
