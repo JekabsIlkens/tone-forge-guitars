@@ -19,7 +19,7 @@ class ProfileController
 
     public function edit(): Response
     {
-        return inertia("Profile/Profile");
+        return inertia("Profile/Edit");
     }
 
     public function update(UpdateProfileRequest $request): RedirectResponse
