@@ -1,17 +1,22 @@
 <h1>
-    <img align="left" alt="TFG-LOGO" width="75px" src="https://i.postimg.cc/NFc36wMx/TFG-nbg.png"/>
-    | Tone Forge Guitars | eCommerce
+    <img align="center" alt="TFG-LOGO" width="1500px" src="https://i.postimg.cc/ZK1gQH02/TFG-banner.png"/>
 </h1>
 
-**Tech Stack:** Laravel + React + Inertia + MySQL + Tailwind + Stripe API
+**Tech stack:** Laravel + React + Inertia + MySQL + Tailwind + Stripe API
+
+## Table of Contents
+**[Installation Instructions](#instructions-on-how-to-install-and-run-the-application)**<br>
+**[Progress on Development](#progress-on-development)**<br>
+**[Screenshot Showcase](#screenshot-showcase)**<br>
+
+## Instructions on how to install and run the application:
 
 ### Ensure you have the following installed:
 - PHP (version 8.2 or later)
 - Composer (for PHP dependencies)
+- Symfony CLI (for serving over https)
 - Node/npm (for frontend dependencies and asset building)
 - MySQL or PostgreSQL (for a local database server)
-
-## Instructions on how to install and run the application:
 
 ### Clone the repository on your local machine and step into the project directory:
 ```shell
@@ -20,8 +25,11 @@ git clone https://github.com/JekabsIlkens/tone-forge-guitars.git
 cd tone-forge-guitars
 ```
 
-### Open .env.example and configure the database credentials to match your local setup:
+### Open .env.example, add your Stripe API test keys and local database credentials:
 ```shell
+STRIPE_KEY=public_key_test
+STRIPE_SECRET=secret_key_test
+
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -51,5 +59,5 @@ php artisan migrate:fresh           # Runs the database migrations
 php artisan db:seed                 # Seeds the database
 
 npm run dev                         # Starts the Vite development server
-php artisan serve                   # Starts the Laravel server
+symfony serve                       # Starts the Laravel server
 ```

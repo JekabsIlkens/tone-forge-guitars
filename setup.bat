@@ -50,5 +50,5 @@ if errorlevel 1 (
     exit /b
 )
 
-echo "Setup complete! You can now run the application using - run.bat or run.sh"
+echo "Setup complete! You can now run the application using - start.bat"
 pause
