@@ -6,7 +6,7 @@ import { useEffect } from "react";
 export default function UserLayout({ children }) {
     const { auth, url, routes, flash, cartCount } = usePage().props;
     const { post } = useForm();
-    console.log(usePage().props);
+
     useEffect(() => {
         if (flash?.success) {
             toast.success(flash.success, {

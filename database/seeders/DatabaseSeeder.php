@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
                 'category_id' => '1',
             ],
             [
-                'name' => 'Cort Jumbo acoustic-electric guitar CJ-Retro-VSM',
+                'name' => 'Cort Jumbo acoustic CJ-Retro-VSM',
                 'description' => 'Fishman Ned-D Humbucker, Vintage Sunburst (Satin)',
                 'image_url' => 'https://www.muzikasveikals.lv/image/cache/catalog/gitaras/Cort/CJ_Retro_VSM_Cort-1000x1000.JPG',
                 'price' => '29900',

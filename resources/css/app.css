@@ -37,7 +37,7 @@
 
     .title 
     { 
-        @apply my-4 text-center text-3xl font-bold leading-9 text-gray; 
+        @apply my-4 py-2 text-center text-3xl font-bold leading-9 text-gray rounded-sm bg-base_light; 
     }
 
     .nav-link 
