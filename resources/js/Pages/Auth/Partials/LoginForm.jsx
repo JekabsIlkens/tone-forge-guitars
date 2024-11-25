@@ -29,6 +29,7 @@ export default function LoginForm() {
                     error={errors.email}
                     disabled={processing}
                 />
+
                 <InputField
                     id="password"
                     label="Password"
@@ -38,7 +39,9 @@ export default function LoginForm() {
                     error={errors.password}
                     disabled={processing}
                 />
+
                 <div className="warning">{errors.error}</div>
+                
                 <button className="primary-btn mt-4" disabled={processing}>
                     {processing ? "Processing..." : "Login"}
                 </button>

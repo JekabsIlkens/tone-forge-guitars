@@ -30,6 +30,7 @@ export default function RegisterForm() {
                     error={errors.full_name}
                     disabled={processing}
                 />
+
                 <InputField
                     id="email"
                     label="Email"
@@ -39,6 +40,7 @@ export default function RegisterForm() {
                     error={errors.email}
                     disabled={processing}
                 />
+
                 <InputField
                     id="password"
                     label="Password"
@@ -47,7 +49,8 @@ export default function RegisterForm() {
                     onChange={handleChange("password")}
                     error={errors.password}
                     disabled={processing}
-                />      
+                />  
+                    
                 <button className="primary-btn mt-4" disabled={processing}>
                     {processing ? "Processing..." : "Register"}
                 </button>

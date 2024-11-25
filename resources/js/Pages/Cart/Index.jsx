@@ -1,15 +1,7 @@
-import { useForm, usePage } from "@inertiajs/react";
 import CartItemCard from "../../Components/CartItemCard";
+import CheckoutForm from './Partials/CheckoutForm';
 
 export default function Index({ cartItems }) {
-    const { csrf_token: csrfToken } = usePage().props;
-    const { post, processing } = useForm();
-
-    function stripeCheckout(e) {
-        e.preventDefault();
-        post('/stripe');
-    }
-
     const calculateTotal = () =>
         cartItems.reduce((sum, item) => sum + item.product.price / 100 * item.quantity, 0);
 
@@ -36,13 +28,7 @@ export default function Index({ cartItems }) {
                             <span className='text-base_primary'>Total:</span> {calculateTotal()}&#8364;
                         </h2>
 
-                        <form onSubmit={stripeCheckout}>
-                            <input type="hidden" name="_token" value={csrfToken} />
-
-                            <button className="primary-btn mt-4" disabled={processing}>
-                                {processing ? "Processing..." : "Proceed to Checkout"}
-                            </button>
-                        </form>
+                        <CheckoutForm />
                     </div>
                 </div>
             </div>

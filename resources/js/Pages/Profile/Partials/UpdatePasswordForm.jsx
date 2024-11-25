@@ -34,6 +34,7 @@ export default function UpdatePasswordForm() {
                     disabled={processing}
                 />
                 <div className="warning">{errors.error}</div>
+
                 <InputField
                     id="new_password"
                     label="New Password"
@@ -43,6 +44,7 @@ export default function UpdatePasswordForm() {
                     error={errors.new_password}
                     disabled={processing}
                 />
+                
                 <button className="primary-btn mt-4" disabled={processing}>
                     {processing ? "Processing..." : "Change"}
                 </button>

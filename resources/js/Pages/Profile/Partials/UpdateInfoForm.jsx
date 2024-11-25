@@ -31,6 +31,7 @@ export default function UpdateInfoForm() {
                     error={errors.full_name}
                     disabled={processing}
                 />
+
                 <InputField
                     id="email"
                     label="Email"
@@ -40,6 +41,7 @@ export default function UpdateInfoForm() {
                     error={errors.email}
                     disabled={processing}
                 />
+                
                 <button className="primary-btn mt-4" disabled={processing}>
                     {processing ? "Processing..." : "Update"}
                 </button>
