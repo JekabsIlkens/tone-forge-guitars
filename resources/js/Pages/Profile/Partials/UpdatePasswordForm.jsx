@@ -1,4 +1,3 @@
-import "react-toastify/dist/ReactToastify.css";
 import { useForm, usePage } from "@inertiajs/react";
 import InputField from "../../../Components/InputField";
 

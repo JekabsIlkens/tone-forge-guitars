@@ -1,39 +1,9 @@
-import "react-toastify/dist/ReactToastify.css";
 import { useForm, usePage } from "@inertiajs/react";
-import { ToastContainer, toast } from "react-toastify";
-import { useEffect } from "react";
 import CartItemCard from "../../Components/CartItemCard";
 
 export default function Index({ cartItems }) {
-    const { csrf_token: csrfToken, routes, flash } = usePage().props;
+    const { csrf_token: csrfToken } = usePage().props;
     const { post, processing } = useForm();
-
-    useEffect(() => {
-        if (flash?.success) {
-            toast.success(flash.success, {
-                position: "bottom-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-        }
-        if (flash?.error) {
-            toast.error(flash.error, {
-                position: "bottom-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-        }
-    }, [flash.success], [flash.error]);
 
     function stripeCheckout(e) {
         e.preventDefault();
@@ -76,8 +46,6 @@ export default function Index({ cartItems }) {
                     </div>
                 </div>
             </div>
-
-            <ToastContainer />
         </>
     );
 }

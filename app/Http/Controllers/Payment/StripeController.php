@@ -22,6 +22,11 @@ class StripeController
     public function checkout()
     {
         $cartItems = $this->cartService->getCartItems();
+
+        if ($cartItems->isEmpty()) {
+            return redirect()->back()->with('error', 'Your cart is empty!');
+        }
+
         $lineItems = $this->stripeService->getLineItems($cartItems);
 
         Stripe::setApiKey(env('STRIPE_SECRET'));
