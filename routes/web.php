@@ -16,8 +16,7 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/login', [LoginController::class, 'store'])->name('login.store')->middleware('throttle:10,1');
 });
 
-Route::prefix('shop')->group(function () 
-{
+Route::prefix('shop')->group(function () {
     Route::get('/', [CategoryController::class, 'index'])->name('category.index');
     Route::get('/{category}', [CategoryController::class, 'show'])->name('category.show');
     Route::get('/{category}/{product}', [ProductController::class, 'show'])->name('product.show');
