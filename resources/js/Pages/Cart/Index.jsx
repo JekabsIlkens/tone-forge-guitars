@@ -21,8 +21,20 @@ export default function Index({ cartItems }) {
                 theme: "light",
             });
         }
-    }, [flash.success]);
-    console.log(cartItems);
+        if (flash?.error) {
+            toast.error(flash.error, {
+                position: "bottom-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        }
+    }, [flash.success], [flash.error]);
+
     function stripeCheckout(e) {
         e.preventDefault();
         post('/stripe');

@@ -5,6 +5,7 @@ namespace App\Services\Shop;
 use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CartService
 {
@@ -41,5 +42,25 @@ class CartService
         $cartItem->delete();
 
         return $cartItem;
+    }
+
+    public function processOrder()
+    {
+        DB::transaction(function () 
+        {
+            $cartItems = $this->getCartItems();
+
+            foreach ($cartItems as $item) 
+            {
+                $item->product->decrement('stock', $item->quantity);
+            }
+
+            $this->clearCart();
+        });
+    }
+
+    public function clearCart()
+    {
+        Cart::where('user_id', Auth::id())->delete();
     }
 }

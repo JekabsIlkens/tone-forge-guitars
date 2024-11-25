@@ -48,5 +48,4 @@ Route::middleware(['auth'])->prefix('cart')->group(function ()
 });
 
 Route::post('/stripe', [StripeController::class, 'checkout'])->name('stripe.checkout');
-
 Route::get('/success', [StripeController::class, 'success'])->name('payment.success');

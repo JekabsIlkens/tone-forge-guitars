@@ -2,35 +2,29 @@
 
 namespace App\Http\Controllers\Payment;
 
-use Illuminate\Support\Facades\Auth;
+use App\Services\Payment\StripeService;
+use App\Services\Shop\CartService;
 use Inertia\Inertia;
-use Inertia\Response;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
-use App\Models\Cart;
 
 class StripeController
 {
+    protected StripeService $stripeService;
+    protected CartService $cartService;
+
+    public function __construct(StripeService $stripeService, CartService $cartService)
+    {
+        $this->stripeService = $stripeService;
+        $this->cartService = $cartService;
+    }
+
     public function checkout()
     {
+        $cartItems = $this->cartService->getCartItems();
+        $lineItems = $this->stripeService->getLineItems($cartItems);
+
         Stripe::setApiKey(env('STRIPE_SECRET'));
-
-        $cartItems = Cart::where('user_id', Auth::id())->with('product')->get();
-
-        $lineItems = $cartItems->map(function ($item) {
-            return [
-                'price_data' => [
-                    'currency' => 'eur',
-                    'product_data' => [
-                        'name' => $item->product->name,
-                        'description' => $item->product->description,
-                        'images' => [$item->product->image_url],
-                    ],
-                    'unit_amount' => $item->product->price,
-                ],
-                'quantity' => $item->quantity,
-            ];
-        })->toArray();
 
         $session = Session::create([
             'line_items' => $lineItems,
@@ -44,15 +38,7 @@ class StripeController
 
     public function success()
     {
-        $cartItems = Cart::where('user_id', Auth::id())->with('product')->get();
-
-        foreach ($cartItems as $item) 
-        {
-            $item->product->stock -= $item->quantity;
-            $item->product->save();
-        }
-
-        Cart::where('user_id', Auth::id())->delete();
+        $this->cartService->processOrder();
 
         return inertia('Payment/Success');
     }
