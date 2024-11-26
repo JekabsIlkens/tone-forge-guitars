@@ -1,4 +1,4 @@
-export default function InputField({ id, label, type, value, onChange, error, disabled }) {
+export default function InputField({ id, label, type, placeholder, value, onChange, error, disabled }) {
     return (
         <>
             <div>
@@ -6,6 +6,7 @@ export default function InputField({ id, label, type, value, onChange, error, di
                 <input
                     id={id}
                     type={type}
+                    placeholder={placeholder}
                     value={value}
                     onChange={onChange}
                     disabled={disabled}

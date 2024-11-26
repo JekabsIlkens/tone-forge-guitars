@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
@@ -25,6 +26,11 @@ class User extends Authenticatable
             [
                 'password' => 'hashed',
             ];
+    }
+
+    public function address(): HasOne
+    {
+        return $this->hasOne(Address::class);
     }
 
     public function cartItems(): HasMany

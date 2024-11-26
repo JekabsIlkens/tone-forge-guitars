@@ -37,9 +37,13 @@ class HandleInertiaRequests extends Middleware
                 ],
 
                 'profile' => [
+                    'index' => route('profile.index'),
                     'edit' => route('profile.edit'),
-                    'update' => route('profile.update'),
                     'destroy' => route('profile.destroy'),
+                ],
+
+                'address' => [
+                    'update' => route('address.update'),
                 ],
 
                 'password' => [

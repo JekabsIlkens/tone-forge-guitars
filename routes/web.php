@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\{RegisterController, LoginController, LogoutController};
-use App\Http\Controllers\Profile\{ProfileController, PasswordController};
+use App\Http\Controllers\Profile\{ProfileController, AddressController, PasswordController};
 use App\Http\Controllers\Shop\{CategoryController, ProductController, CartController};
 use App\Http\Controllers\Payment\StripeController;
 
@@ -26,11 +26,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [LogoutController::class, 'destroy'])->name('logout');
 
     Route::prefix('profile')->name('profile.')->group(function () {
-        Route::get('/', [ProfileController::class, 'edit'])->name('edit');
-        Route::patch('/', [ProfileController::class, 'update'])->name('update');
+        Route::get('/', [ProfileController::class, 'index'])->name('index');
+        Route::get('/edit', [ProfileController::class, 'edit'])->name('edit');
         Route::delete('/', [ProfileController::class, 'destroy'])->name('destroy');
     });
 
+    Route::patch('/address', [AddressController::class, 'update'])->name('address.update');
     Route::patch('/password', [PasswordController::class, 'update'])->name('password.update');
 
     Route::prefix('cart')->name('cart.')->group(function () 

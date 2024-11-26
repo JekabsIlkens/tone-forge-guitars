@@ -14,7 +14,7 @@
 **To-Do List:**
 - [ ] Ability to update cart item quantity on cart page
 - [ ] Stripe Webhook listener to correctly track order status
-- [ ] Shipping address details for customers before purchase
+- [x] Shipping address details for customers before purchase
 - [ ] Admin panel for managing products and active orders
 
 ## Installation Instructions:
@@ -67,14 +67,14 @@ php artisan migrate:fresh           # Runs the database migrations
 php artisan db:seed                 # Seeds the database
 
 npm run dev                         # Starts the Vite development server
-symfony serve                       # Starts the Laravel server
+symfony serve                       # Starts the Symfony server
 ```
 
 ## User Journey Showcase:
 <img src='https://i.postimg.cc/y6v1xJrN/1.png' alt='page-1' width="1200px"/> <br/>
 <img src='https://i.postimg.cc/158QzvqW/2.png' alt='page-2' width="1200px"/> <br/>
 <img src='https://i.postimg.cc/Pqjs2hFc/3.png' alt='page-3' width="1200px"/> <br/>
-<img src='https://i.postimg.cc/NFLW505y/4.png' alt='page-4' width="1200px"/> <br/>
+<img src='https://i.postimg.cc/T1j1kBsG/4.png' alt='page-4' width="1200px"/> <br/>
 <img src='https://i.postimg.cc/ryYB75P5/5.png' alt='page-5' width="1200px"/> <br/>
 <img src='https://i.postimg.cc/mg7KcJ2S/6.png' alt='page-6' width="1200px"/> <br/>
 <img src='https://i.postimg.cc/Tw3s4Pjk/7.png' alt='page-7' width="1200px"/> <br/>

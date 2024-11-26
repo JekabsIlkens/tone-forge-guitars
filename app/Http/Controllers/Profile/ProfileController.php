@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Profile;
 
-use App\Http\Requests\Profile\UpdateProfileRequest;
 use App\Services\Profile\ProfileService;
+use App\Services\Profile\AddressService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Response;
@@ -11,22 +11,26 @@ use Inertia\Response;
 class ProfileController
 {
     protected ProfileService $profileService;
+    protected AddressService $addressService;
 
-    public function __construct(ProfileService $profileService)
+    public function __construct(ProfileService $profileService, AddressService $addressService)
     {
         $this->profileService = $profileService;
+        $this->addressService = $addressService;
+    }
+
+    public function index(): Response
+    {
+        return inertia("Profile/Index");
     }
 
     public function edit(): Response
     {
-        return inertia("Profile/Edit");
-    }
+        $address = $this->addressService->getShippingDetails();
 
-    public function update(UpdateProfileRequest $request): RedirectResponse
-    {
-        $this->profileService->updateProfile($request->user(), $request->validated());
-
-        return back()->with('success', 'Profile updated successfully!');
+        return inertia("Profile/Edit", [
+            'address' => $address,
+        ]);
     }
 
     public function destroy(Request $request): RedirectResponse
