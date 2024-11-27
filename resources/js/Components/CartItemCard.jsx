@@ -1,6 +1,13 @@
-import { Link } from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
 
 export default function CartItemCard({ id, name, image, price, quantity }) {
+    const { delete: destroy } = useForm();
+
+    function deleteCartItem(e) {
+        e.preventDefault();
+        destroy(`/cart/remove/${id}`);
+    }
+
     return (
         <>
             <div className='flex bg-white my-4 p-2 rounded-sm shadow-md shadow-base_secondary'>
@@ -19,9 +26,11 @@ export default function CartItemCard({ id, name, image, price, quantity }) {
                         <span className='font-medium text-base_primary'>Quantity:</span> {quantity}
                     </p>
 
-                    <Link className="font-semibold text-warning-400" href={`/cart/remove/${id}`} method="delete">
-                        Remove
-                    </Link>
+                    <form onSubmit={deleteCartItem}>
+                        <button className="danger-btn mt-1 w-auto px-2 py-0 font-medium">
+                            Remove
+                        </button>
+                    </form>
                 </div>
             </div>
         </>
