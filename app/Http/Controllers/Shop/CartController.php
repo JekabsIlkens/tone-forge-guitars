@@ -29,7 +29,7 @@ class CartController
         {
             $this->cartService->addToCart($request->validated());
 
-            return redirect()->route('cart.index')->with('success', 'Item added to cart!');
+            return redirect()->back()->with('success', 'Item added to cart!');
         } 
         catch (\Exception $e) 
         {

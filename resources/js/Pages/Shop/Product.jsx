@@ -1,9 +1,18 @@
+import { Link, usePage } from '@inertiajs/react';
 import AddToCartForm from './Partials/AddToCartForm';
 
 export default function Product({product}) {
+    const { routes } = usePage().props;
+    
     return (
         <>
             <h1 className="title shadow-lg shadow-secondary-700">Specific Guitar</h1>
+
+            <div className='px-4 text-start text-base font-semibold leading-9 text-gray rounded-sm bg-base_light shadow-lg shadow-secondary-700'>
+                <Link href={routes.back}>
+                    <span className='text-2xl'>&larr;</span> Back
+                </Link>
+            </div>
 
             <div className="flex space-x-8">
                 <div className="max-w-lg w-full mx-auto mt-8 shadow-lg shadow-secondary-700">

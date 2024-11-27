@@ -26,6 +26,8 @@ class HandleInertiaRequests extends Middleware
             'routes' => [
                 'home' => route('home'),
 
+                'back' => url()->previous(),
+
                 'register' => [
                     'create' => route('register'),
                     'store' => route('register.store'),
