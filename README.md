@@ -3,9 +3,9 @@
 </h1>
 
 ## Table of Contents
-**[Development Notes](#development-notes)**<br>
-**[Installation Instructions](#installation-instructions)**<br>
-**[User Journey Showcase](#user-journey-showcase)**<br>
+**[Development Notes](#development-notes)**<br/>
+**[Installation Instructions](#installation-instructions)**<br/>
+**[User Journey Showcase](#user-journey-showcase)**<br/>
 
 ## Development Notes
 
@@ -72,6 +72,7 @@ symfony serve                       # Starts the Symfony server
 ```
 
 ## User Journey Showcase:
+**Note:** may not represent current state (depends on how often I update these) <br/> <br/>
 <img src='https://i.postimg.cc/y6v1xJrN/1.png' alt='page-1' width="1200px"/> <br/>
 <img src='https://i.postimg.cc/158QzvqW/2.png' alt='page-2' width="1200px"/> <br/>
 <img src='https://i.postimg.cc/Pqjs2hFc/3.png' alt='page-3' width="1200px"/> <br/>
