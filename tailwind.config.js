@@ -10,6 +10,7 @@ export default {
         {
             'white': '#ffffff',
             'gray': '#4b5563',
+            'light_gray': '#c9ccd0',
             'black': '#000000',
 
             'base_dark': '#0d1117',

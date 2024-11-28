@@ -97,11 +97,19 @@ export default function UserLayout({ children }) {
                 </header>
 
                 <main className="flex-grow max-w-4xl w-full mx-auto p-4">
+                    <div className="fixed left-0 top-0 -z-10 h-full w-full">
+                    <div class="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
+                    </div>
                     {children}
                 </main>
 
                 <footer>
-                    <p>&copy; 2024 Tone Forge Guitars. All rights reserved.</p>
+                    <p className="mx-4">&copy; 2024 Tone Forge Guitars. All rights reserved.</p>
+                    <p className="mx-4 text-base_primary">support@toneforge.com</p>
+                    <img className="ml-4 mr-1 h-6 w-6" src="/images/fb_social.png" alt="FB" />
+                    <img className="ml-1 mr-1 h-6 w-6" src="/images/ig_social.png" alt="IG" />
+                    <img className="ml-1 mr-1 h-6 w-6" src="/images/yt_social.png" alt="YT" />
+                    <img className="ml-1 mr-4 h-6 w-6" src="/images/tw_social.png" alt="TW" />
                 </footer>
             </div>
         </>

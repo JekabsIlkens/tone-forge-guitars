@@ -9,7 +9,6 @@
     body 
     {
         font-family: "Poppins", sans-serif;
-        @apply min-h-screen bg-no-repeat bg-gradient-to-t from-base_light to-secondary-800;
     }
 }
 
@@ -27,7 +26,7 @@
 
     footer 
     {
-        @apply text-center text-base_primary py-4;
+        @apply flex items-center justify-between max-w-screen-lg mx-auto p-4 text-base font-medium text-gray rounded-sm bg-base_light border border-light_gray;
     }
 
     nav 
