@@ -21,7 +21,7 @@
 
     header 
     { 
-        @apply bg-base_light shadow-md shadow-secondary-700; 
+        @apply bg-base_light border border-light_gray shadow-md shadow-light_gray; 
     }
 
     footer 
@@ -36,7 +36,7 @@
 
     .title 
     { 
-        @apply my-4 py-2 text-center text-3xl font-bold leading-9 text-gray rounded-sm bg-base_light; 
+        @apply my-4 py-2 text-center text-3xl font-bold leading-9 text-gray rounded-sm bg-white; 
     }
 
     .nav-link 
@@ -54,7 +54,7 @@
     input[type="password"],
     input[type="number"]
     {
-        @apply block w-full rounded-sm border-0 p-2 text-dark-100 shadow-sm ring-1 ring-inset ring-primary-500 placeholder:text-dark-300 sm:text-sm bg-light-950;
+        @apply block w-full rounded-sm border-0 p-2 text-dark-100 shadow-sm ring-1 ring-inset ring-primary-500 placeholder:text-dark-300 sm:text-sm bg-white;
     }
 
     label 

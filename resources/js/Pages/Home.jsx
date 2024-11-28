@@ -9,7 +9,7 @@ export default function Home() {
             <CardBase>
                 <div className="max-w-lg w-full mx-auto px-4 py-4">
                     <div className="h-auto">
-                        <h1 className="title bg-white">WELCOME</h1>
+                        <h1 className="title">WELCOME</h1>
                     </div>
 
                     <p className="text-center text-md font-medium my-4 text-gray">

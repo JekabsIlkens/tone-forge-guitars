@@ -98,7 +98,7 @@ export default function UserLayout({ children }) {
 
                 <main className="flex-grow max-w-4xl w-full mx-auto p-4">
                     <div className="fixed left-0 top-0 -z-10 h-full w-full">
-                    <div class="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
+                    <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
                     </div>
                     {children}
                 </main>
