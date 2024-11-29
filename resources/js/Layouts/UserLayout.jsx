@@ -48,7 +48,7 @@ export default function UserLayout({ children }) {
     return (
         <>
             <ToastContainer />
-            <div className="min-h-full">
+            <div className="min-h-screen flex flex-col">
                 <nav className="bg-base_light">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="flex h-16 items-center justify-between">
@@ -109,9 +109,8 @@ export default function UserLayout({ children }) {
                     </div>
                 </header>
 
-
-                <main>
-                    {/* Fixed grid background for all pages. */}
+                <main className="flex-grow">
+                    {/* Fixed grid background for all pages */}
                     <div className="fixed left-0 top-0 -z-10 h-full w-full">
                         <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
                     </div>
@@ -120,6 +119,23 @@ export default function UserLayout({ children }) {
                         {children}
                     </div>
                 </main>
+
+                <footer className="py-4 bg-base_light border border-light_gray">
+                    <div className="flex justify-center mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-sm font-medium text-gray">
+                        <p className="mx-2">
+                            &copy; 2024 TONE FORGE GUITARS. All rights reserved.
+                        </p>
+
+                        <p className="mx-2 text-base_primary">
+                            support@toneforge.com
+                        </p>
+
+                        <img className="ml-2 mr-1 h-5 w-5" src="/images/fb_social.png" alt="Facebook" />
+                        <img className="ml-1 mr-1 h-5 w-5" src="/images/ig_social.png" alt="Instagram" />
+                        <img className="ml-1 mr-1 h-5 w-5" src="/images/yt_social.png" alt="YouTube" />
+                        <img className="ml-1 mr-2 h-5 w-5" src="/images/tw_social.png" alt="Twitter" />
+                    </div>
+                </footer>
             </div>
         </>
     );
