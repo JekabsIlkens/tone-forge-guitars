@@ -25,6 +25,7 @@ export default function RegisterForm() {
                     id="full_name"
                     label="Full Name"
                     type="text"
+                    placeholder="Eric Clapton"
                     value={data.full_name}
                     onChange={handleChange("full_name")}
                     error={errors.full_name}
@@ -35,6 +36,7 @@ export default function RegisterForm() {
                     id="email"
                     label="Email"
                     type="email"
+                    placeholder="eric.clapton@mail.com"
                     value={data.email}
                     onChange={handleChange("email")}
                     error={errors.email}
@@ -45,13 +47,14 @@ export default function RegisterForm() {
                     id="password"
                     label="Password"
                     type="password"
+                    placeholder="Clapton1234#"
                     value={data.password}
                     onChange={handleChange("password")}
                     error={errors.password}
                     disabled={processing}
                 />  
                     
-                <button className="primary-btn mt-4" disabled={processing}>
+                <button disabled={processing} className="primary-btn">
                     {processing ? "Processing..." : "Register"}
                 </button>
             </form>

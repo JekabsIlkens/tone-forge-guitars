@@ -18,51 +18,59 @@
 
 @layer components 
 {
-    .title 
-    { 
-        @apply my-4 py-2 text-center text-3xl font-bold leading-9 text-gray rounded-sm bg-white; 
+    nav {
+        @apply bg-base_light;
     }
 
-    .nav-link 
-    { 
-        @apply text-base_primary px-2 py-1 text-sm font-medium border-b-2 border-base_light hover:border-base_primary; 
+    header {
+        @apply bg-white border border-light_gray shadow-md shadow-light_gray;
     }
 
-    .nav-link-active 
-    {
-        @apply text-base_primary px-2 py-1 text-sm font-medium border-b-2 border-base_primary;
+    main {
+        @apply flex-grow;
+    }
+
+    footer {
+        @apply py-4 bg-base_light border border-light_gray;
+    }
+
+    form {
+        @apply space-y-4;
+    }
+
+    label { 
+        @apply block text-sm/6 font-medium text-gray; 
     }
 
     input[type="text"],
     input[type="email"],
     input[type="password"],
-    input[type="number"]
-    {
-        @apply block w-full rounded-sm border-0 p-2 text-dark-100 shadow-sm ring-1 ring-inset ring-primary-500 placeholder:text-dark-300 sm:text-sm bg-white;
+    input[type="number"] {
+        @apply block w-full px-3 py-1.5 rounded-sm text-base sm:text-sm/6 text-gray bg-white outline outline-1 -outline-offset-1 outline-gray;
     }
 
-    label 
-    { 
-        @apply block mt-2 text-sm font-medium leading-6 text-dark-100 first-letter:capitalize; 
+    .primary-btn {
+        @apply flex w-full justify-center rounded-sm bg-base_primary px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-base_accent disabled:bg-gray disabled:cursor-wait;
     }
 
-    .primary-btn 
+    .warning-text
     {
-        @apply flex w-full justify-center rounded-sm bg-primary-500 px-3 py-1.5 text-sm font-semibold leading-6 text-light-950 shadow-sm hover:bg-secondary-600 hover:text-white disabled:bg-gray disabled:cursor-wait;
+        @apply block text-sm/6 font-medium text-warning-500
     }
 
-    .danger-btn 
-    {
-        @apply flex w-full justify-center rounded-sm bg-warning-500 px-3 py-1.5 text-sm font-semibold leading-6 text-light-950 shadow-sm hover:bg-warning-600 hover:text-white disabled:bg-gray disabled:cursor-wait;
+    .content-card {
+        @apply rounded-sm bg-primary-900 bg-opacity-45 border border-light_gray shadow-lg shadow-light_gray;
     }
 
-    .disabled-btn 
-    {
-        @apply flex w-full justify-center rounded-sm bg-gray px-3 py-1.5 text-sm font-semibold leading-6 text-light-950 shadow-sm;
+    .nav-link-active {
+        @apply rounded-sm px-3 py-2 text-sm font-medium bg-base_primary text-white;
     }
 
-    .warning 
-    {
-        @apply block text-sm font-medium leading-6 text-warning-500
+    .nav-link-inactive {
+        @apply rounded-sm px-3 py-2 text-sm font-medium text-gray hover:bg-base_primary hover:text-white;
+    }
+
+    .text-link {
+        @apply font-semibold text-base_primary hover:text-base_accent;
     }
 }

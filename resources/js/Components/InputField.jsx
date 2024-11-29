@@ -3,15 +3,17 @@ export default function InputField({ id, label, type, placeholder, value, onChan
         <>
             <div>
                 <label htmlFor={id}>{label}</label>
-                <input
-                    id={id}
-                    type={type}
-                    placeholder={placeholder}
-                    value={value}
-                    onChange={onChange}
-                    disabled={disabled}
-                />
-                {error && <div className="warning">{error}</div>}
+                <div>
+                    <input
+                        id={id}
+                        type={type}
+                        placeholder={placeholder}
+                        value={value}
+                        onChange={onChange}
+                        disabled={disabled}
+                    />
+                    <div className="warning-text">{error}</div>
+                </div>
             </div>
         </>
     );

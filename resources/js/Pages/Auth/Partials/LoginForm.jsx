@@ -40,9 +40,9 @@ export default function LoginForm() {
                     disabled={processing}
                 />
 
-                <div className="warning">{errors.error}</div>
+                <div className="warning-text">{errors.error}</div>
                 
-                <button className="primary-btn mt-4" disabled={processing}>
+                <button disabled={processing} className="primary-btn">
                     {processing ? "Processing..." : "Login"}
                 </button>
             </form>
