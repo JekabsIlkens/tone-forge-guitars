@@ -39,78 +39,87 @@ export default function UserLayout({ children }) {
         post(routes.logout);
     }
 
-    function getLinkClass(href) {
-        return url === href ? "nav-link-active" : "nav-link";
+    function getLinkClassName(href) {
+        return url === href ?
+            "rounded-md px-3 py-2 text-sm font-medium bg-base_primary text-white"
+            : "rounded-md px-3 py-2 text-sm font-medium text-gray hover:bg-base_primary hover:text-white";
     }
 
     return (
         <>
             <ToastContainer />
-            
-            <div className="min-h-screen flex flex-col">
-                <header>
-                    <nav>
-                        <div className="flex justify-start space-x-4 w-1/3">
-                            <Link className={getLinkClass("/")} href={routes.home}>
-                                Home
-                            </Link>
+            <div className="min-h-full">
+                <nav className="bg-base_light">
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="flex h-16 items-center justify-between">
+                            <div className="hidden md:flex flex-1">
+                                <div className="flex items-baseline space-x-4">
+                                    <Link href={routes.home} className={getLinkClassName('/')}>
+                                        Home
+                                    </Link>
 
-                            <Link className={getLinkClass("/shop")} href={routes.shop.category.index}>
-                                Shop
-                            </Link>
+                                    <Link href={routes.shop.category.index} className={getLinkClassName('/shop')}>
+                                        Shop
+                                    </Link>
+                                </div>
+                            </div>
+
+                            <div className="shrink-0 flex justify-center flex-1">
+                                <img className="h-8" src="/images/logo-small.png" alt="TONE FORGE" />
+                            </div>
+
+                            <div className="hidden md:flex flex-1 justify-end">
+                                <div className="flex items-baseline space-x-4">
+                                    {auth.user ? (
+                                        <>
+                                            <Link href={routes.cart.index} className={getLinkClassName('/cart')}>
+                                                Cart <span>({cartCount})</span>
+                                            </Link>
+
+                                            <Link href={routes.profile.edit} className={getLinkClassName('/profile')}>
+                                                Profile
+                                            </Link>
+
+                                            <form onSubmit={logoutUser}>
+                                                <button className={getLinkClassName('/logout')}>
+                                                    Logout
+                                                </button>
+                                            </form>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Link href={routes.login.create} className={getLinkClassName('/login')}>
+                                                Login
+                                            </Link>
+
+                                            <Link href={routes.register.create} className={getLinkClassName('/register')}>
+                                                Register
+                                            </Link>
+                                        </>
+                                    )}
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                </nav>
 
-                        <div className="flex-grow text-center">
-                            <img className="mx-auto px-2 py-1 h-10" src="/images/logo-small.png" alt="TONE FORGE GUITARS" />
-                        </div>
-
-                        <div className="flex justify-end space-x-4 w-1/3">
-                            {auth.user ? (
-                                <>
-                                    <Link className={getLinkClass("/profile")} href={routes.profile.edit}>
-                                        Profile
-                                    </Link>
-
-                                    <Link className={getLinkClass("/cart")} href="/cart">
-                                        Cart <span>({cartCount})</span>
-                                    </Link>
-
-                                    <form onSubmit={logoutUser}>
-                                        <button className="nav-link">
-                                            Logout
-                                        </button>
-                                    </form>
-                                </>
-                            ) : (
-                                <>
-                                    <Link className={getLinkClass("/login")} href={routes.login.create}>
-                                        Login
-                                    </Link>
-
-                                    <Link className={getLinkClass("/register")} href={routes.register.create}>
-                                        Register
-                                    </Link>
-                                </>
-                            )}
-                        </div>
-                    </nav>
+                <header className="bg-white border border-light_gray shadow-md shadow-light_gray">
+                    <div className="mx-auto max-w-7xl px-4 py-2 sm:px-6 lg:px-8 flex items-center justify-center">
+                        <h1 className="text-xl font-semibold tracking-tight text-gray">Dashboard</h1>
+                    </div>
                 </header>
 
-                <main className="flex-grow max-w-4xl w-full mx-auto p-4">
-                    <div className="fixed left-0 top-0 -z-10 h-full w-full">
-                    <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
-                    </div>
-                    {children}
-                </main>
 
-                <footer>
-                    <p className="mx-4">&copy; 2024 Tone Forge Guitars. All rights reserved.</p>
-                    <p className="mx-4 text-base_primary">support@toneforge.com</p>
-                    <img className="ml-4 mr-1 h-6 w-6" src="/images/fb_social.png" alt="FB" />
-                    <img className="ml-1 mr-1 h-6 w-6" src="/images/ig_social.png" alt="IG" />
-                    <img className="ml-1 mr-1 h-6 w-6" src="/images/yt_social.png" alt="YT" />
-                    <img className="ml-1 mr-4 h-6 w-6" src="/images/tw_social.png" alt="TW" />
-                </footer>
+                <main>
+                    {/* Fixed grid background for all pages. */}
+                    <div className="fixed left-0 top-0 -z-10 h-full w-full">
+                        <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
+                    </div>
+
+                    <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                        {children}
+                    </div>
+                </main>
             </div>
         </>
     );

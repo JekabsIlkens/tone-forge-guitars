@@ -6,34 +6,18 @@
 
 @layer base 
 {
-    body 
-    {
+    html {
+        @apply h-full bg-white;
+    }
+
+    body {
         font-family: "Poppins", sans-serif;
+        @apply h-full;
     }
 }
 
 @layer components 
 {
-    main 
-    { 
-        @apply max-w-screen-lg mx-auto; 
-    }
-
-    header 
-    { 
-        @apply bg-base_light border border-light_gray shadow-md shadow-light_gray; 
-    }
-
-    footer 
-    {
-        @apply flex items-center justify-between max-w-screen-lg mx-auto p-4 text-base font-medium text-gray rounded-sm bg-base_light border border-light_gray;
-    }
-
-    nav 
-    { 
-        @apply p-4 max-w-screen-lg mx-auto flex items-center justify-between; 
-    }
-
     .title 
     { 
         @apply my-4 py-2 text-center text-3xl font-bold leading-9 text-gray rounded-sm bg-white; 

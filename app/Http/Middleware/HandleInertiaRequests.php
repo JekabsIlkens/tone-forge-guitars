@@ -59,6 +59,10 @@ class HandleInertiaRequests extends Middleware
                         'index' => route('category.index'),
                     ],
                 ],
+
+                'cart' => [
+                    'index' => route('cart.index'),
+                ],
             ],
 
             'flash' => [
