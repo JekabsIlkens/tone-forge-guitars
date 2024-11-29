@@ -41,8 +41,8 @@ export default function UserLayout({ children }) {
 
     function getLinkClassName(href) {
         return url === href ?
-            "rounded-md px-3 py-2 text-sm font-medium bg-base_primary text-white"
-            : "rounded-md px-3 py-2 text-sm font-medium text-gray hover:bg-base_primary hover:text-white";
+            "rounded-sm px-3 py-2 text-sm font-medium bg-base_primary text-white"
+            : "rounded-sm px-3 py-2 text-sm font-medium text-gray hover:bg-base_primary hover:text-white";
     }
 
     return (
@@ -54,13 +54,8 @@ export default function UserLayout({ children }) {
                         <div className="flex h-16 items-center justify-between">
                             <div className="hidden md:flex flex-1">
                                 <div className="flex items-baseline space-x-4">
-                                    <Link href={routes.home} className={getLinkClassName('/')}>
-                                        Home
-                                    </Link>
-
-                                    <Link href={routes.shop.category.index} className={getLinkClassName('/shop')}>
-                                        Shop
-                                    </Link>
+                                    <Link href={routes.home} className={getLinkClassName('/')}>Home</Link>
+                                    <Link href={routes.shop.category.index} className={getLinkClassName('/shop')}>Shop</Link>
                                 </div>
                             </div>
 
@@ -72,29 +67,16 @@ export default function UserLayout({ children }) {
                                 <div className="flex items-baseline space-x-4">
                                     {auth.user ? (
                                         <>
-                                            <Link href={routes.cart.index} className={getLinkClassName('/cart')}>
-                                                Cart <span>({cartCount})</span>
-                                            </Link>
-
-                                            <Link href={routes.profile.edit} className={getLinkClassName('/profile')}>
-                                                Profile
-                                            </Link>
-
+                                            <Link href={routes.cart.index} className={getLinkClassName('/cart')}>Cart <span>({cartCount})</span></Link>
+                                            <Link href={routes.profile.edit} className={getLinkClassName('/profile')}>Profile</Link>
                                             <form onSubmit={logoutUser}>
-                                                <button className={getLinkClassName('/logout')}>
-                                                    Logout
-                                                </button>
+                                                <button className={getLinkClassName('/logout')}>Logout</button>
                                             </form>
                                         </>
                                     ) : (
                                         <>
-                                            <Link href={routes.login.create} className={getLinkClassName('/login')}>
-                                                Login
-                                            </Link>
-
-                                            <Link href={routes.register.create} className={getLinkClassName('/register')}>
-                                                Register
-                                            </Link>
+                                            <Link href={routes.login.create} className={getLinkClassName('/login')}>Login</Link>
+                                            <Link href={routes.register.create} className={getLinkClassName('/register')}>Register</Link>
                                         </>
                                     )}
                                 </div>
@@ -114,7 +96,6 @@ export default function UserLayout({ children }) {
                     <div className="fixed left-0 top-0 -z-10 h-full w-full">
                         <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
                     </div>
-
                     <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                         {children}
                     </div>
@@ -122,14 +103,8 @@ export default function UserLayout({ children }) {
 
                 <footer className="py-4 bg-base_light border border-light_gray">
                     <div className="flex justify-center mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-sm font-medium text-gray">
-                        <p className="mx-2">
-                            &copy; 2024 TONE FORGE GUITARS. All rights reserved.
-                        </p>
-
-                        <p className="mx-2 text-base_primary">
-                            support@toneforge.com
-                        </p>
-
+                        <p className="mx-2">&copy; 2024 TONE FORGE GUITARS. All rights reserved.</p>
+                        <p className="mx-2 text-base_primary">support@toneforge.com</p>
                         <img className="ml-2 mr-1 h-5 w-5" src="/images/fb_social.png" alt="Facebook" />
                         <img className="ml-1 mr-1 h-5 w-5" src="/images/ig_social.png" alt="Instagram" />
                         <img className="ml-1 mr-1 h-5 w-5" src="/images/yt_social.png" alt="YouTube" />
