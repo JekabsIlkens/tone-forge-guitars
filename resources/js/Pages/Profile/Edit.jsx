@@ -2,41 +2,39 @@ import UpdateShippingDetailsForm from './Partials/UpdateShippingDetailsForm';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm';
 import DeleteUserForm from './Partials/DeleteUserForm';
 
-export default function Edit({address}) {
+export default function Edit({ address }) {
     return (
-        <>
-            <div className="max-w-lg w-full mx-auto mt-8 shadow-lg shadow-secondary-700">
-                <div className="bg-base_light p-4 rounded-sm">
-                    <h1 className="title">Update Shipping Details</h1>
+        <div className='flex justify-center space-x-4'>
+            <div className="min-h-full sm:w-full sm:max-w-sm px-10 py-10 lg:px-8 content-card">
+                <h1 className="mb-4 text-center text-2xl/9 font-bold tracking-tight text-gray">
+                    Update Shipping Details
+                </h1>
 
-                    <div className="mx-auto">
-                        <UpdateShippingDetailsForm address={address} />
-                    </div>
-                </div>
+                <UpdateShippingDetailsForm address={address} />
             </div>
 
-            <div className='flex space-x-4'>
-                <div className="max-w-lg w-full h-auto mx-auto mt-8 mb-4 p-4 rounded-sm bg-base_light shadow-lg shadow-secondary-800">
-                    <h1 className="title">Change Password</h1>
+            <div className='grid grid-cols-1 gap-4 content-between'>
+                <div className="h-auto sm:w-full sm:max-w-sm px-10 py-10 lg:px-8 content-card">
+                    <h1 className="mb-4 text-center text-2xl/9 font-bold tracking-tight text-gray">
+                        Change Password
+                    </h1>
 
-                    <div className="mx-auto">
-                        <UpdatePasswordForm />
-                    </div>
+                    <UpdatePasswordForm />
                 </div>
 
-                <div className="max-w-lg w-full h-auto mx-auto mt-8 mb-4 p-4 rounded-sm bg-base_light shadow-lg shadow-secondary-800">
-                    <h1 className="title">Delete Account</h1>
+                <div className="h-auto sm:w-full sm:max-w-sm px-10 py-10 lg:px-8 content-card">
+                    <h1 className="mb-4 text-center text-2xl/9 font-bold tracking-tight text-gray">
+                        Delete Account
+                    </h1>
 
-                    <p className="text-center text-warning-500"> 
+                    <p className="text-center text-md font-medium text-warning-500">
                         All data and resources linked to your account will be permanently erased.
                         Don't worry, all your pending orders will still be delivered!
                     </p>
 
-                    <div className="mx-auto">
-                        <DeleteUserForm />
-                    </div>
+                    <DeleteUserForm />
                 </div>
             </div>
-        </>
+        </div>
     );
 }

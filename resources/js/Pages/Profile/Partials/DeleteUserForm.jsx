@@ -10,12 +10,10 @@ export default function DeleteUserForm() {
     }
 
     return (
-        <>
-            <form onSubmit={deleteUser}>
-                <button className="danger-btn mt-4">
-                    Delete
-                </button>
-            </form>
-        </>
+        <form onSubmit={deleteUser}>
+            <button className="danger-btn mt-4">
+                Delete
+            </button>
+        </form>
     )
 }
