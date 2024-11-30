@@ -67,7 +67,9 @@ export default function UserLayout({ children }) {
                     </div>
                 </Nav>
 
-                <Header titleText="-custom title text-" />
+                <Header 
+                    titleText="Black Friday &nbsp;&nbsp;|&nbsp;&nbsp; Best deal of the year &nbsp;&nbsp;|&nbsp;&nbsp; Get up to 25% off" 
+                />
 
                 <Main>
                     {children}
