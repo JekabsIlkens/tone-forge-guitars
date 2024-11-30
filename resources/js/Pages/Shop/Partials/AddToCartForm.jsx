@@ -1,45 +1,44 @@
-import { useForm } from '@inertiajs/react';
 import InputField from "../../../Components/InputField";
 
-export default function AddToCartForm({id, stock}) {
+import { useForm, usePage } from '@inertiajs/react';
+import { useFormHandler } from "../../../Hooks/useFormHandler";
+
+export default function AddToCartForm({ id, stock }) {
+    const { routes } = usePage().props;
     const { data, setData, post, errors, processing } = useForm({
         product_id: id,
         quantity: 1,
     });
 
+    const handleChange = useFormHandler(setData);
+
     function handleAddToCart(e) {
         e.preventDefault();
-        post('/cart/add');
+        post(routes.cart.store);
     };
 
-    function handleChange(field) {
-        return (e) => setData(field, e.target.value);
-    }
-
     return (
-        <>
-            <form onSubmit={handleAddToCart}>
-                <InputField
-                    id="quantity"
-                    label="Quantity"
-                    type="number"
-                    value={data.quantity}
-                    onChange={handleChange("quantity")}
-                    error={errors.quantity}
-                    disabled={processing}
-                />
-                <div className="warning">{errors.error}</div>
+        <form onSubmit={handleAddToCart}>
+            <InputField
+                id="quantity"
+                label="Quantity"
+                type="number"
+                value={data.quantity}
+                onChange={handleChange("quantity")}
+                error={errors.quantity}
+                disabled={processing}
+            />
+            <div className="warning">{errors.error}</div>
 
-                {stock ? (
-                    <button className="primary-btn mt-4" disabled={processing}>
-                        {processing ? "Processing..." : "Add to cart"}
-                    </button>
-                ) : (
-                    <button className="disabled-btn mt-4" disabled={processing}>
-                        Out of stock
-                    </button>
-                )}
-            </form>
-        </>
+            {stock ? (
+                <button className="primary-btn mt-4" disabled={processing}>
+                    {processing ? "Processing..." : "Add to cart"}
+                </button>
+            ) : (
+                <button className="disabled-btn mt-4" disabled={processing}>
+                    Out of stock
+                </button>
+            )}
+        </form>
     );
 }

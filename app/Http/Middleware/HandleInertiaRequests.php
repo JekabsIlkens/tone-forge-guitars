@@ -62,6 +62,7 @@ class HandleInertiaRequests extends Middleware
 
                 'cart' => [
                     'index' => route('cart.index'),
+                    'store' => route('cart.store'),
                 ],
             ],
 

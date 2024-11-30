@@ -53,6 +53,10 @@
         @apply flex w-full justify-center rounded-sm bg-base_primary px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-base_accent disabled:bg-gray disabled:cursor-wait;
     }
 
+    .disabled-btn {
+        @apply flex w-full justify-center rounded-sm bg-gray px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-gray/80;
+    }
+
     .warning-text
     {
         @apply block text-sm/6 font-medium text-warning-500
