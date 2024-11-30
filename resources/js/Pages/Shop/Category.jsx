@@ -1,32 +1,23 @@
-import { Link, usePage } from '@inertiajs/react';
-import ProductCard from "../../Components/ProductCard";
+import ProductCard from "./Partials/ProductCard";
 
 export default function Category({ category, products }) {
-    const { routes } = usePage().props;
-
     return (
-        <>
-            <h1 className="title shadow-lg shadow-secondary-700">All Guitars</h1>
-
-            <div className='px-4 text-start text-base font-semibold leading-9 text-gray rounded-sm bg-base_light shadow-lg shadow-secondary-700'>
-                <Link href={routes.shop.category.index}>
-                    <span className='text-2xl'>&larr;</span> Back
-                </Link>
+        <div>
+            <div className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
+                <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                    {products.map((product) => (
+                        <ProductCard
+                            key={product.id}
+                            category_id={category.id}
+                            product_id={product.id}
+                            product_image={product.image_url}
+                            product_name={product.name}
+                            product_price={product.price / 100}
+                            product_stock={product.stock}
+                        />
+                    ))}
+                </div>
             </div>
-
-            <div className="grid grid-cols-4 gap-8 mt-12">
-                {products.map((product) => (
-                    <ProductCard 
-                        key={product.id} 
-                        category_id={category.id}
-                        product_id={product.id} 
-                        product_image={product.image_url} 
-                        product_name={product.name}  
-                        product_price={product.price / 100}
-                        product_stock={product.stock}
-                    />
-                ))}
-            </div>
-        </>
+        </div>
     );
 }

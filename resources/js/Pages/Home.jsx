@@ -6,8 +6,8 @@ export default function Home() {
     return (
         <div className="py-4 sm:py-8">
             <div className="mx-auto max-w-2xl px-4 lg:max-w-7xl lg:px-6">
-                <p className="mx-auto max-w-lg text-balance text-center text-5xl font-semibold tracking-tight text-gray sm:text-5xl">
-                    Welcome to <span className="text-base_primary">Tone Forge Guitars</span>
+                <p className="mx-auto max-w-lg text-balance text-center text-5xl font-semibold tracking-tight text-base_primary sm:text-5xl">
+                    Tone Forge Guitars
                 </p>
 
                 <div className="mt-4 grid gap-4 sm:mt-8 lg:grid-cols-3 lg:grid-rows-2">
