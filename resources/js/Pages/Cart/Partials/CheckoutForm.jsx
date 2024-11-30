@@ -15,7 +15,7 @@ export default function CheckoutForm() {
                 <input type="hidden" name="_token" value={csrfToken} />
 
                 <button className="primary-btn mt-4" disabled={processing}>
-                    {processing ? "Processing..." : "Proceed to Checkout"}
+                    {processing ? "Processing..." : "Proceed to checkout"}
                 </button>
             </form>
         </>

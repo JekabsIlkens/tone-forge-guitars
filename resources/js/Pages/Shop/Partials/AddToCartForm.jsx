@@ -28,7 +28,7 @@ export default function AddToCartForm({ id, stock }) {
                 error={errors.quantity}
                 disabled={processing}
             />
-            <div className="warning">{errors.error}</div>
+            <div className="warning-text">{errors.error}</div>
 
             {stock ? (
                 <button className="primary-btn mt-4" disabled={processing}>

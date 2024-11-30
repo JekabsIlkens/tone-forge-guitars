@@ -1,4 +1,5 @@
-import CartItemCard from "../../Components/CartItemCard";
+import FormHeader from "../../Components/FormHeader";
+import CartItemCard from "./Partials/CartItemCard";
 import CheckoutForm from './Partials/CheckoutForm';
 
 export default function Index({ cartItems }) {
@@ -7,41 +8,38 @@ export default function Index({ cartItems }) {
 
     return (
         <>
-            <div className="max-w-lg w-full mx-auto mt-8 shadow-lg shadow-secondary-700">
-                <div className="bg-base_light p-4 rounded-sm">
-                    <h1 className='title'>Cart Contents</h1>
+            <div className="max-w-lg w-full mx-auto p-4 content-card">
+                <FormHeader titleText="Your shopping cart" />
 
-                    <div className="mx-auto">
+                <div className="mx-auto">
+                    {cartItems.length ? (
+                        <>
+                            {cartItems.map((item) => (
+                                <CartItemCard
+                                    key={item.id}
+                                    id={item.id}
+                                    name={item.product.name}
+                                    image={item.product.image_url}
+                                    price={item.product.price / 100}
+                                    quantity={item.quantity}
+                                />
+                            ))}
 
-                        {cartItems.length ? (
-                            <>
-                                {cartItems.map((item) => (
-                                    <CartItemCard 
-                                        key={item.id}
-                                        id={item.id}
-                                        name={item.product.name} 
-                                        image={item.product.image_url} 
-                                        price={item.product.price / 100} 
-                                        quantity={item.quantity}
-                                    />
-                                ))}
+                            <h2 className='text-start text-2xl font-bold text-base_primary'>
+                                Subtotal: <span className="font-semibold text-gray">{calculateTotal()}&#8364;</span>
+                            </h2>
 
-                                <h2 className='title text-start text-gray'>
-                                    <span className='text-base_primary'>Total:</span> {calculateTotal()}&#8364;
-                                </h2>
-
-                                <CheckoutForm />
-                            </>
-                        ):(
-                            <>
-                                <div className='bg-white my-4 p-2 text-center rounded-sm shadow-md shadow-base_secondary'>
-                                    <p className="text-center my-4 text-xl font-semibold text-warning-500">
-                                        Your cart is empty...
-                                    </p>
-                                </div>
-                            </>
-                        )}
-                    </div>
+                            <CheckoutForm />
+                        </>
+                    ) : (
+                        <>
+                            <div className='flex justify-between my-4 p-2 bg-white rounded-sm border border-light_gray shadow-md shadow-light_gray'>
+                                <p className="text-start text-2xl font-bold text-gray">
+                                    Your cart is empty...
+                                </p>
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
         </>

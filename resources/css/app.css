@@ -57,6 +57,10 @@
         @apply flex w-full justify-center rounded-sm bg-gray px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-gray/80;
     }
 
+    .danger-btn {
+        @apply flex w-full justify-center rounded-sm bg-warning-500 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-warning-600 disabled:bg-gray disabled:cursor-wait;
+    }
+
     .warning-text
     {
         @apply block text-sm/6 font-medium text-warning-500

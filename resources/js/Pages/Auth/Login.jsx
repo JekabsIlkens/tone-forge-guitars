@@ -1,4 +1,4 @@
-import FormHeader from './Partials/FormHeader';
+import FormHeader from "../../Components/FormHeader";
 import LoginForm from './Partials/LoginForm';
 
 import { Link, usePage } from "@inertiajs/react";
