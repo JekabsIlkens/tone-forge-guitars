@@ -1,26 +1,17 @@
-import CardBase from "../../Components/CardBase";
-import CategoryCard from "../../Components/CategoryCard";
+import CategoryCard from "./Partials/CategoryCard";
 
-export default function Categories({categories}) {
+export default function Categories({ categories }) {
     return (
-        <>
-            <CardBase>
-                <h1 className="title">Available Categories</h1>
-
-                <div className="w-0 h-0 bg-Acoustic hover:bg-Acoustic_active"></div>
-                <div className="w-0 h-0 bg-Electric hover:bg-Electric_active"></div>
-                <div className="w-0 h-0 bg-Bass hover:bg-Bass_active"></div>
-
-                <div className="flex space-x-8 mx-8 mb-8">
-                    {categories.map((category) => (
-                        <CategoryCard 
-                            key={category.id}
-                            id={category.id} 
-                            name={category.name} 
-                        />
-                    ))}
-                </div>
-            </CardBase>
-        </>
+        <div className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
+            <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-1 lg:grid-cols-3 xl:gap-x-8">
+                {categories.map((category) => (
+                    <CategoryCard
+                        key={category.id}
+                        id={category.id}
+                        name={category.name}
+                    />
+                ))}
+            </div>
+        </div>
     );
 }

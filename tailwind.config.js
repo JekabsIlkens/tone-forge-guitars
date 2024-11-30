@@ -9,8 +9,8 @@ export default {
         colors:
         {
             'white': '#ffffff',
-            'gray': '#4b5563',
             'light_gray': '#c9ccd0',
+            'gray': '#4b5563',
             'black': '#000000',
 
             'base_dark': '#0d1117',
@@ -103,17 +103,7 @@ export default {
                 950: '#f5eff0',
             },
         },
-        extend: {
-            backgroundImage: {
-                'Acoustic': "url('/images/acoustic.jpg')",
-                'Electric': "url('/images/electric.jpg')",
-                'Bass': "url('/images/bass.jpg')",
-                
-                'Acoustic_active': "url('/images/acoustic_active.jpg')",
-                'Electric_active': "url('/images/electric_active.jpg')",
-                'Bass_active': "url('/images/bass_active.jpg')",
-            },
-        },
+        extend: {},
     },
     plugins: [],
 };
