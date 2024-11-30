@@ -1,62 +1,36 @@
-import UserNav from "./Partials/UserNav";
-import UserHeader from "./Partials/UserHeader";
-import UserMain from "./Partials/UserMain";
-import UserFooter from "./Partials/UserFooter";
+import Nav from "./Partials/Nav";
+import Header from "./Partials/Header";
+import Main from "./Partials/Main";
+import Footer from "./Partials/Footer";
+import LogoutForm from "./Partials/LogoutForm";
+
 import "react-toastify/dist/ReactToastify.css";
-import { Link, usePage, useForm } from "@inertiajs/react";
-import { ToastContainer, toast } from "react-toastify";
-import { useEffect } from "react";
+import { useToast } from "../Hooks/useToast";
+import { ToastContainer } from "react-toastify";
+import { useLinkClassName } from "../Hooks/useLinkClassName";
+import { Link, usePage } from "@inertiajs/react";
 
 export default function UserLayout({ children }) {
-    const { auth, url, routes, flash, cartCount } = usePage().props;
-    const { post } = useForm();
+    const { auth, routes, flash, cartCount } = usePage().props;
+    const getLinkClassName = useLinkClassName();
 
-    useEffect(() => {
-        if (flash?.success) {
-            toast.success(flash.success, {
-                position: "bottom-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-        }
-        if (flash?.error) {
-            toast.error(flash.error, {
-                position: "bottom-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-        }
-    }, [flash.success, flash.error]);
-
-    function logoutUser(e) {
-        e.preventDefault();
-        post(routes.logout);
-    }
-
-    function getLinkClassName(href) {
-        return url === href ? "nav-link-active" : "nav-link-inactive";
-    }
+    useToast(flash);
 
     return (
         <>
             <ToastContainer />
 
             <div className="min-h-screen flex flex-col">
-                <UserNav>
+                <Nav>
                     <div className="hidden md:flex flex-1">
                         <div className="flex items-baseline space-x-4">
-                            <Link href={routes.home} className={getLinkClassName('/')}>Home</Link>
-                            <Link href={routes.shop.category.index} className={getLinkClassName('/shop')}>Shop</Link>
+                            <Link href={routes.home} className={getLinkClassName('/')}>
+                                Home
+                            </Link>
+
+                            <Link href={routes.shop.category.index} className={getLinkClassName('/shop')}>
+                                Shop
+                            </Link>
                         </div>
                     </div>
 
@@ -68,29 +42,38 @@ export default function UserLayout({ children }) {
                         <div className="flex items-baseline space-x-4">
                             {auth.user ? (
                                 <>
-                                    <Link href={routes.cart.index} className={getLinkClassName('/cart')}>Cart <span>({cartCount})</span></Link>
-                                    <Link href={routes.profile.edit} className={getLinkClassName('/profile')}>Profile</Link>
-                                    <form onSubmit={logoutUser}>
-                                        <button className={getLinkClassName('/logout')}>Logout</button>
-                                    </form>
+                                    <Link href={routes.cart.index} className={getLinkClassName('/cart')}>
+                                        Cart <span>({cartCount})</span>
+                                    </Link>
+
+                                    <Link href={routes.profile.edit} className={getLinkClassName('/profile')}>
+                                        Profile
+                                    </Link>
+
+                                    <LogoutForm />
                                 </>
                             ) : (
                                 <>
-                                    <Link href={routes.login.create} className={getLinkClassName('/login')}>Login</Link>
-                                    <Link href={routes.register.create} className={getLinkClassName('/register')}>Register</Link>
+                                    <Link href={routes.login.create} className={getLinkClassName('/login')}>
+                                        Login
+                                    </Link>
+
+                                    <Link href={routes.register.create} className={getLinkClassName('/register')}>
+                                        Register
+                                    </Link>
                                 </>
                             )}
                         </div>
                     </div>
-                </UserNav>
+                </Nav>
 
-                <UserHeader header="-custom header text-" />
+                <Header titleText="-custom title text-" />
 
-                <UserMain>
+                <Main>
                     {children}
-                </UserMain>
+                </Main>
 
-                <UserFooter />
+                <Footer />
             </div>
         </>
     );
