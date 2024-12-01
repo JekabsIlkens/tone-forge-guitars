@@ -2,14 +2,14 @@ import AddToCartForm from './Partials/AddToCartForm';
 
 export default function Product({ product }) {
     return (
-        <div className="flex flex-row justify-center min-h-full px-6 py-12 lg:px-8">
-            <div className="max-w-lg w-full mx-auto mt-8 content-card">
+        <div className="flex flex-row justify-center min-h-full px-4 py-4 lg:px-4">
+            <div className="max-w-lg w-full mx-2 content-card">
                 <div className="flex justify-center h-96 rounded-sm bg-white">
                     <img src={product.image_url} className="p-4" />
                 </div>
             </div>
 
-            <div className="max-w-lg w-full mx-auto mt-8 content-card">
+            <div className="max-w-lg w-full mx-2 content-card">
                 <div className="h-96 p-8">
                     <p className="text-start text-2xl font-bold text-gray">
                         {product.name}
