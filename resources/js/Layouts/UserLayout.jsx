@@ -46,7 +46,7 @@ export default function UserLayout({ children }) {
                                         Cart <span>({cartCount})</span>
                                     </Link>
 
-                                    <Link href={routes.profile.edit} className={getLinkClassName('/profile')}>
+                                    <Link href={routes.profile.index} className={getLinkClassName('/profile')}>
                                         Profile
                                     </Link>
 

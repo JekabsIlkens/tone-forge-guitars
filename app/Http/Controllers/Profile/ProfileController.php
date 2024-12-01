@@ -21,7 +21,13 @@ class ProfileController
 
     public function index(): Response
     {
-        return inertia("Profile/Index");
+        $user = $this->profileService->getUserDetails();
+        $address = $this->addressService->getShippingDetails();
+
+        return inertia("Profile/Index", [
+            'user' => $user,
+            'address' => $address,
+        ]);
     }
 
     public function edit(): Response

@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function ()
 {   
     Route::prefix('profile')->name('profile.')->group(function () 
     {
+        Route::get('/', [ProfileController::class, 'index'])->name('index');
         Route::get('/edit', [ProfileController::class, 'edit'])->name('edit');
         Route::patch('/address', [AddressController::class, 'update'])->name('address.update');
         Route::patch('/password', [PasswordController::class, 'update'])->name('password.update');
