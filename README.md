@@ -12,11 +12,11 @@
 **Tech Stack:** Laravel + React + Inertia + MySQL + Tailwind + Stripe API
 
 **To-Do List:**
-- [ ] Refactor messy routing to better comply with RESTful
-- [ ] Ability to update cart item quantity on cart page
-- [ ] Stripe Webhook listener to correctly track order status
+- [x] Refactor messy routing to better comply with RESTful
 - [x] Shipping address details for customers before purchase
 - [ ] Admin panel for managing products and active orders
+- [ ] Stripe Webhook listener to correctly track order status
+- [ ] Ability to update cart item quantity on cart page
 
 ## Installation Instructions:
 

@@ -14,7 +14,7 @@ export default function UpdatePasswordForm() {
 
     function updatePassword(e) {
         e.preventDefault();
-        patch(routes.password.update, {
+        patch(routes.profile.password.update, {
             onSuccess: () => reset(),
             preserveScroll: true,
         });

@@ -17,7 +17,7 @@ export default function UpdateShippingDetailsForm({ address }) {
 
     function updateShippingDetails(e) {
         e.preventDefault();
-        patch(routes.address.update, {
+        patch(routes.profile.address.update, {
             preserveScroll: true,
         });
     }

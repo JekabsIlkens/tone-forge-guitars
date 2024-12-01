@@ -8,7 +8,7 @@ export default function ProductCard({ category_id, product_id, product_image, pr
             <div className="mt-4">
                 <div className="grid grid-cols-1 gap-4 w-full">
                     <h3 className="text-center text-sm font-semibold text-gray">
-                        <Link href={`/shop/${category_id}/${product_id}`}>
+                        <Link href={`/categories/${category_id}/products/${product_id}`}>
                             <span className="absolute inset-0"></span>
                             {product_name}
                         </Link>

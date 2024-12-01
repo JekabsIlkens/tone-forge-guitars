@@ -5,7 +5,7 @@ export default function CartItemCard({ id, name, image, price, quantity }) {
 
     function deleteCartItem(e) {
         e.preventDefault();
-        destroy(`/cart/remove/${id}`);
+        destroy(`/cart/${id}`);
     }
 
     return (

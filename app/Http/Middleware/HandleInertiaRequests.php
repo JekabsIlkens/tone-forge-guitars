@@ -26,8 +26,6 @@ class HandleInertiaRequests extends Middleware
             'routes' => [
                 'home' => route('home'),
 
-                'back' => url()->previous(),
-
                 'register' => [
                     'create' => route('register'),
                     'store' => route('register.store'),
@@ -38,21 +36,18 @@ class HandleInertiaRequests extends Middleware
                     'store' => route('login.store'),
                 ],
 
+                'logout' => route('logout'),
+
                 'profile' => [
-                    'index' => route('profile.index'),
                     'edit' => route('profile.edit'),
+                    'address' => [
+                        'update' => route('profile.address.update'),
+                    ],
+                    'password' => [
+                        'update' => route('profile.password.update'),
+                    ],
                     'destroy' => route('profile.destroy'),
                 ],
-
-                'address' => [
-                    'update' => route('address.update'),
-                ],
-
-                'password' => [
-                    'update' => route('password.update'),
-                ],
-
-                'logout' => route('logout'),
 
                 'shop' => [
                     'category' => [
