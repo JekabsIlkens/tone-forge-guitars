@@ -18,7 +18,7 @@ export default function CartItemCard({ id, name, image, price, quantity }) {
                 </p>
 
                 <p className='text-start text-lg font-semibold text-gray'>
-                    Price: {price}&#8364;
+                    Price: {price / 100}&#8364;
                 </p>
                 
                 <p className='text-start text-base font-medium text-gray'>

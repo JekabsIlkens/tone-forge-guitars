@@ -15,7 +15,7 @@ export default function ProductCard({ category_id, product_id, product_image, pr
                     </h3>
 
                     <div className="flex justify-between w-full">
-                        <p className="text-base font-semibold text-gray">{product_price}&#8364;</p>
+                        <p className="text-base font-semibold text-gray">{product_price / 100}&#8364;</p>
 
                         {product_stock > 0 ? (
                             <p className="text-sm font-medium text-base_primary">In stock</p>

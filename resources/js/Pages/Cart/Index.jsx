@@ -21,7 +21,7 @@ export default function Index({ cartItems }) {
                                         id={item.id}
                                         name={item.product.name}
                                         image={item.product.image_url}
-                                        price={item.product.price / 100}
+                                        price={item.product.price}
                                         quantity={item.quantity}
                                     />
                                 ))}
@@ -36,7 +36,7 @@ export default function Index({ cartItems }) {
                     ) : (
                         <>
                             <div className='flex justify-between my-4 p-2 bg-white rounded-sm border border-light_gray shadow-md shadow-light_gray'>
-                                <p className="text-start text-2xl font-bold text-gray">
+                                <p className="text-start text-xl font-bold text-gray">
                                     Your cart is empty...
                                 </p>
                             </div>

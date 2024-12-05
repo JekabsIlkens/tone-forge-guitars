@@ -5,10 +5,14 @@ export default function Index({ user, address }) {
 
     return (
         <div className="p-10 content-card">
-            <div className="flex justify-between">
-                <h3 className="text-xl/7 font-semibold text-gray">
-                    Shipping Details & Order History
-                </h3>
+            <div className="flex justify-between items-center">
+                <div>
+                    <h3 className="text-xl/7 font-semibold text-gray">
+                        Shipping Details & Order History
+                    </h3>
+                    {address?.address_line_one ? <p></p> 
+                    : <p className="text-sm font-medium text-warning-500">Please update your shipping address!</p>}
+                </div>
                 <Link href={routes.profile.edit} className="primary-btn w-auto">
                     Edit profile
                 </Link>

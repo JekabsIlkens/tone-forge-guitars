@@ -11,7 +11,7 @@ export default function Category({ category, products }) {
                         product_id={product.id}
                         product_image={product.image_url}
                         product_name={product.name}
-                        product_price={product.price / 100}
+                        product_price={product.price}
                         product_stock={product.stock}
                     />
                 ))}
