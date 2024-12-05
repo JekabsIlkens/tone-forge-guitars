@@ -23,12 +23,12 @@ export default function UserLayout({ children }) {
             <div className="min-h-screen flex flex-col">
                 <Nav>
                     <div className="hidden md:flex flex-1">
-                        <div className="flex items-baseline space-x-4">
+                        <div className="flex items-end space-x-4">
                             <Link href={routes.home} className={getLinkClassName('/')}>
                                 Home
                             </Link>
 
-                            <Link href={routes.shop.category.index} className={getLinkClassName('/shop')}>
+                            <Link href={routes.shop.category.index} className={getLinkClassName('/categories')}>
                                 Shop
                             </Link>
                         </div>
@@ -39,11 +39,14 @@ export default function UserLayout({ children }) {
                     </div>
 
                     <div className="hidden md:flex flex-1 justify-end">
-                        <div className="flex items-baseline space-x-4">
+                        <div className="flex items-end space-x-4">
                             {auth.user ? (
                                 <>
                                     <Link href={routes.cart.index} className={getLinkClassName('/cart')}>
-                                        Cart <span>({cartCount})</span>
+                                        <div className="flex justify-center items-stretch space-x-2">
+                                            <img className="h-5" src="/images/cart.png" alt="Cart" />
+                                            <span>{cartCount}</span>
+                                        </div>
                                     </Link>
 
                                     <Link href={routes.profile.index} className={getLinkClassName('/profile')}>

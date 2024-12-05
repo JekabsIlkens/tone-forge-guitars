@@ -4,7 +4,7 @@ import CheckoutForm from './Partials/CheckoutForm';
 
 export default function Index({ cartItems }) {
     const calculateTotal = () =>
-        cartItems.reduce((sum, item) => sum + item.product.price / 100 * item.quantity, 0);
+        cartItems.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
 
     return (
         <>
@@ -14,19 +14,21 @@ export default function Index({ cartItems }) {
                 <div className="mx-auto">
                     {cartItems.length ? (
                         <>
-                            {cartItems.map((item) => (
-                                <CartItemCard
-                                    key={item.id}
-                                    id={item.id}
-                                    name={item.product.name}
-                                    image={item.product.image_url}
-                                    price={item.product.price / 100}
-                                    quantity={item.quantity}
-                                />
-                            ))}
+                            <div className="h-96 overflow-auto mb-4">
+                                {cartItems.map((item) => (
+                                    <CartItemCard
+                                        key={item.id}
+                                        id={item.id}
+                                        name={item.product.name}
+                                        image={item.product.image_url}
+                                        price={item.product.price / 100}
+                                        quantity={item.quantity}
+                                    />
+                                ))}
+                            </div>
 
                             <h2 className='text-start text-2xl font-bold text-base_primary'>
-                                Subtotal: <span className="font-semibold text-gray">{calculateTotal()}&#8364;</span>
+                                Subtotal: <span className="font-semibold text-gray">{calculateTotal() / 100}&#8364;</span>
                             </h2>
 
                             <CheckoutForm />

@@ -71,11 +71,11 @@
     }
 
     .nav-link-active {
-        @apply rounded-sm px-3 py-2 text-sm font-medium bg-base_primary text-white;
+        @apply px-2 py-1 text-sm font-medium text-gray border-b-2 border-base_primary;
     }
 
     .nav-link-inactive {
-        @apply rounded-sm px-3 py-2 text-sm font-medium text-gray hover:bg-base_primary hover:text-white;
+        @apply px-2 py-1 text-sm font-medium text-gray border-b-2 border-base_light hover:border-gray;
     }
 
     .text-link {
